@@ -6,974 +6,835 @@
 <title>Glanzmarkt — Free Market for Everyone</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --pink: #FF6B9D;
-  --pink2: #FF8FB3;
-  --pink3: #FFB3CC;
-  --pink-glow: rgba(255,107,157,0.18);
-  --yellow: #FFD166;
-  --green: #06D6A0;
-  --blue: #118AB2;
-  --dark: #0D0D0D;
-  --dark2: #161616;
-  --dark3: #1E1E1E;
-  --dark4: #272727;
-  --white: #FFF5F8;
-  --white2: rgba(255,245,248,0.65);
-  --white3: rgba(255,245,248,0.1);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--dark);color:var(--white);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
+:root{--pk:#FF6B9D;--pk2:#FF8FB3;--pkg:rgba(255,107,157,0.18);--yl:#FFD166;--gn:#06D6A0;--dk:#0D0D0D;--dk2:#161616;--dk3:#1E1E1E;--dk4:#272727;--wh:#FFF5F8;--wh2:rgba(255,245,248,0.65);--red:#FF4757;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--dk);color:var(--wh);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--pk);border-radius:4px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:13px 22px;background:rgba(13,13,13,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,107,157,0.12);}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer;}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--pk),var(--yl));display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:900;}.logo-text span{color:var(--pk);}
+.nav-right{display:flex;align-items:center;gap:9px;}
+.nb{padding:8px 16px;border-radius:50px;font-size:0.76rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;border:none;}
+.ng{background:transparent;border:1px solid rgba(255,107,157,0.3)!important;color:var(--wh2);}
+.ng:hover{border-color:var(--pk)!important;color:var(--pk);}
+.np{background:linear-gradient(135deg,var(--pk),#e0477a);color:white;}
+.np:hover{transform:translateY(-2px);}
+.page{display:none;}.page.active{display:block;}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:105px 22px 65px;text-align:center;position:relative;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;pointer-events:none;}
+.htag{display:inline-flex;align-items:center;background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.25);color:var(--pk2);font-size:0.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 15px;border-radius:50px;margin-bottom:20px;animation:fadeUp 0.7s ease both;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.3rem,7vw,4.6rem);font-weight:900;line-height:1.05;margin-bottom:16px;animation:fadeUp 0.7s ease 0.1s both;}
+.hero h1 .pk{color:var(--pk);}.hero h1 .yl{color:var(--yl);}
+.hero p{font-size:0.96rem;color:var(--wh2);line-height:1.75;max-width:460px;margin:0 auto 34px;font-weight:300;animation:fadeUp 0.7s ease 0.2s both;}
+.hbtns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.7s ease 0.3s both;}
+.btn{padding:12px 30px;border-radius:50px;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Plus Jakarta Sans',sans-serif;border:none;text-decoration:none;display:inline-block;}
+.btn-pk{background:linear-gradient(135deg,var(--pk),#e0477a);color:white;box-shadow:0 6px 28px var(--pkg);}
+.btn-pk:hover{transform:translateY(-3px);box-shadow:0 12px 38px rgba(255,107,157,0.45);}
+.btn-ol{background:transparent;border:2px solid rgba(255,245,248,0.2)!important;color:var(--wh);}
+.btn-ol:hover{border-color:var(--pk)!important;color:var(--pk);}
+.btn-sm{padding:9px 20px;font-size:0.78rem;}
+.btn-red{background:linear-gradient(135deg,var(--red),#c0392b);color:white;}
+.btn-gn{background:linear-gradient(135deg,var(--gn),#04a87c);color:var(--dk);}
+.hbadges{display:flex;gap:12px;justify-content:center;margin-top:40px;flex-wrap:wrap;animation:fadeUp 0.7s ease 0.4s both;}
+.hbadge{display:flex;align-items:center;gap:7px;background:var(--dk3);border:1px solid rgba(255,107,157,0.12);border-radius:50px;padding:7px 14px;}
+.hbadge span:last-child{font-size:0.76rem;color:var(--wh2);font-weight:500;}
+sec{display:block;padding:65px 22px;}
+.stag{display:inline-block;background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.2);color:var(--pk);font-size:0.66rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:11px;}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.3rem);font-weight:700;margin-bottom:9px;line-height:1.2;}
+.ssub{color:var(--wh2);font-size:0.88rem;line-height:1.7;font-weight:300;max-width:420px;}
+.ctr{text-align:center;}.ctr .ssub{margin:0 auto;}
+.sbg{background:var(--dk2);border-top:1px solid rgba(255,107,157,0.08);border-bottom:1px solid rgba(255,107,157,0.08);}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:40px;max-width:920px;margin-left:auto;margin-right:auto;}
+.sc{background:var(--dk3);border:1px solid rgba(255,107,157,0.1);border-radius:14px;padding:24px 20px;transition:all 0.3s;text-align:center;}
+.sc:hover{border-color:rgba(255,107,157,0.35);transform:translateY(-4px);}
+.sn{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--pk),#e0477a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;margin:0 auto 13px;box-shadow:0 5px 18px var(--pkg);}
+.sc h3{font-size:0.9rem;font-weight:600;margin-bottom:6px;}
+.sc p{font-size:0.78rem;color:var(--wh2);line-height:1.6;font-weight:300;}
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-track{background:var(--dark);}
-::-webkit-scrollbar-thumb{background:var(--pink);border-radius:4px;}
+/* PRODUCT CARDS - Instagram style */
+.pw{max-width:1100px;margin:0 auto;}
+.ph2{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:11px;}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px;}
+.pc{background:var(--dk3);border:1px solid rgba(255,107,157,0.08);border-radius:16px;overflow:hidden;transition:all 0.35s;cursor:pointer;}
+.pc:hover{border-color:rgba(255,107,157,0.4);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.5);}
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 32px;
-  background:rgba(13,13,13,0.9);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,107,157,0.15);
-}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.logo-icon{
-  width:38px;height:38px;border-radius:10px;
-  background:linear-gradient(135deg,var(--pink),var(--yellow));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;box-shadow:0 0 20px var(--pink-glow);
-}
-.logo-text{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--white);}
-.logo-text span{color:var(--pink);}
-.nav-right{display:flex;align-items:center;gap:16px;}
-.nav-btn{
-  padding:10px 24px;border-radius:50px;font-size:0.82rem;
-  font-weight:600;cursor:pointer;transition:all 0.3s;
-  font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none;
-  display:inline-flex;align-items:center;
-}
-.nav-btn-ghost{background:transparent;border:1px solid rgba(255,107,157,0.3);color:var(--white2);}
-.nav-btn-ghost:hover{border-color:var(--pink);color:var(--pink);}
-.nav-btn-pink{background:linear-gradient(135deg,var(--pink),#e0477a);border:none;color:white;box-shadow:0 4px 20px var(--pink-glow);}
-.nav-btn-pink:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,157,0.4);}
+/* PHOTO CONTAINER - tall portrait like fashion apps */
+.pc-img-wrap{position:relative;width:100%;padding-top:120%;overflow:hidden;}
+.pc-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+.pc:hover .pc-img-wrap img{transform:scale(1.05);}
+.pc-img-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:4rem;}
+.pc-tag{position:absolute;top:12px;left:12px;background:linear-gradient(135deg,var(--pk),#e0477a);color:white;font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:50px;z-index:2;}
+.pc-status{position:absolute;top:12px;right:12px;font-size:0.6rem;font-weight:700;padding:4px 10px;border-radius:50px;z-index:2;}
+.pc-status-pending{background:rgba(255,209,102,0.9);color:#333;}
+.pc-status-approved{background:rgba(6,214,160,0.9);color:#fff;}
 
-/* HERO */
-.hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  padding:120px 32px 80px;text-align:center;position:relative;overflow:hidden;
-}
-.hero-orb1{
-  position:absolute;width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,107,157,0.12) 0%,transparent 70%);
-  top:-100px;left:-100px;pointer-events:none;
-}
-.hero-orb2{
-  position:absolute;width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,209,102,0.08) 0%,transparent 70%);
-  bottom:0;right:-50px;pointer-events:none;
-}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.25);
-  color:var(--pink2);font-size:0.78rem;font-weight:600;
-  letter-spacing:2px;text-transform:uppercase;padding:8px 20px;
-  border-radius:50px;margin-bottom:28px;
-  animation:fadeUp 0.7s ease both;
-}
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2.8rem,7vw,5.5rem);
-  font-weight:900;line-height:1.05;margin-bottom:24px;
-  animation:fadeUp 0.7s ease 0.1s both;
-}
-.hero h1 .pink{color:var(--pink);}
-.hero h1 .yellow{color:var(--yellow);}
-.hero p{
-  font-size:1.05rem;color:var(--white2);line-height:1.75;
-  max-width:520px;margin:0 auto 44px;font-weight:300;
-  animation:fadeUp 0.7s ease 0.2s both;
-}
-.hero-btns{
-  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-  animation:fadeUp 0.7s ease 0.3s both;
-}
-.btn-big{padding:16px 40px;border-radius:50px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Plus Jakarta Sans',sans-serif;border:none;text-decoration:none;display:inline-block;}
-.btn-pink{background:linear-gradient(135deg,var(--pink),#e0477a);color:white;box-shadow:0 6px 30px var(--pink-glow);}
-.btn-pink:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,107,157,0.45);}
-.btn-outline{background:transparent;border:2px solid rgba(255,245,248,0.2);color:var(--white);}
-.btn-outline:hover{border-color:var(--pink);color:var(--pink);}
-
-.hero-badges{
-  display:flex;gap:24px;justify-content:center;margin-top:56px;flex-wrap:wrap;
-  animation:fadeUp 0.7s ease 0.4s both;
-}
-.badge{
-  display:flex;align-items:center;gap:10px;
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.12);
-  border-radius:50px;padding:10px 20px;
-}
-.badge-icon{font-size:1.1rem;}
-.badge span{font-size:0.82rem;color:var(--white2);font-weight:500;}
-
-/* SECTIONS */
-section{padding:90px 32px;position:relative;}
-.section-tag{
-  display:inline-block;background:rgba(255,107,157,0.1);
-  border:1px solid rgba(255,107,157,0.2);color:var(--pink);
-  font-size:0.72rem;font-weight:600;letter-spacing:2px;
-  text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:16px;
-}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:12px;line-height:1.2;}
-.section-sub{color:var(--white2);font-size:0.95rem;line-height:1.7;font-weight:300;max-width:480px;}
-.center{text-align:center;}
-.center .section-sub{margin:0 auto;}
-
-/* STEPS */
-.steps-section{background:var(--dark2);border-top:1px solid rgba(255,107,157,0.08);border-bottom:1px solid rgba(255,107,157,0.08);}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:56px;max-width:1000px;margin-left:auto;margin-right:auto;}
-.step-card{
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.1);
-  border-radius:16px;padding:32px 28px;transition:all 0.3s;text-align:center;
-}
-.step-card:hover{border-color:rgba(255,107,157,0.35);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.3);}
-.step-num{
-  width:52px;height:52px;border-radius:50%;
-  background:linear-gradient(135deg,var(--pink),#e0477a);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;
-  margin:0 auto 20px;box-shadow:0 6px 20px var(--pink-glow);
-}
-.step-card h3{font-size:1rem;font-weight:600;margin-bottom:10px;}
-.step-card p{font-size:0.85rem;color:var(--white2);line-height:1.6;font-weight:300;}
+/* PRODUCT INFO */
+.pb{padding:16px;}
+.pv{font-size:0.66rem;color:var(--pk);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.pv-dot{width:5px;height:5px;border-radius:50%;background:var(--pk);}
+.pn{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:5px;line-height:1.25;}
+.pp{font-size:1rem;font-weight:700;color:var(--yl);margin-bottom:8px;}
+.pd{font-size:0.76rem;color:var(--wh2);margin-bottom:14px;line-height:1.55;font-weight:300;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.wab{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;border-radius:50px;background:#25D366;border:none!important;color:white;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none;}
+.wab:hover{background:#1da851;transform:scale(1.02);}
+.wab-icon{font-size:1rem;}
 
 /* PLANS */
-.plans-section{max-width:1050px;margin:0 auto;}
-.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:52px;}
-.plan-card{
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.1);
-  border-radius:16px;padding:32px 24px;text-align:center;
-  transition:all 0.35s;position:relative;overflow:hidden;
-}
-.plan-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,107,157,0.05),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.plan-card:hover::before{opacity:1;}
-.plan-card:hover{border-color:rgba(255,107,157,0.4);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.35);}
-.plan-popular{
-  background:linear-gradient(135deg,var(--pink),#e0477a);
-  border-color:var(--pink) !important;
-  box-shadow:0 8px 40px var(--pink-glow);
-}
-.plan-popular-badge{
-  position:absolute;top:14px;right:14px;
-  background:var(--yellow);color:var(--dark);
-  font-size:0.65rem;font-weight:700;letter-spacing:1px;
-  text-transform:uppercase;padding:4px 10px;border-radius:50px;
-}
-.plan-duration{
-  font-size:0.72rem;font-weight:600;letter-spacing:2px;
-  text-transform:uppercase;color:var(--pink2);margin-bottom:12px;
-}
-.plan-popular .plan-duration{color:rgba(255,255,255,0.8);}
-.plan-price{
-  font-family:'Playfair Display',serif;
-  font-size:2.2rem;font-weight:900;color:var(--white);margin-bottom:4px;
-}
-.plan-popular .plan-price{color:white;}
-.plan-save{
-  font-size:0.75rem;color:var(--green);font-weight:600;
-  margin-bottom:20px;min-height:18px;
-}
-.plan-popular .plan-save{color:var(--yellow);}
-.plan-features{list-style:none;margin-bottom:24px;text-align:left;}
-.plan-features li{
-  font-size:0.82rem;color:var(--white2);padding:6px 0;
-  display:flex;align-items:center;gap:8px;
-  border-bottom:1px solid rgba(255,245,248,0.05);
-}
-.plan-popular .plan-features li{color:rgba(255,255,255,0.8);border-bottom-color:rgba(255,255,255,0.1);}
-.plan-features li:last-child{border:none;}
-.check{color:var(--green);font-size:0.85rem;}
-.plan-popular .check{color:var(--yellow);}
-.plan-btn{
-  width:100%;padding:13px;border-radius:50px;font-size:0.85rem;
-  font-weight:600;cursor:pointer;transition:all 0.3s;
-  font-family:'Plus Jakarta Sans',sans-serif;border:none;
-}
-.plan-btn-outline{background:transparent;border:1.5px solid rgba(255,107,157,0.35);color:var(--white);}
-.plan-btn-outline:hover{background:var(--pink);border-color:var(--pink);color:white;}
-.plan-btn-white{background:white;color:var(--pink);}
-.plan-btn-white:hover{background:var(--yellow);color:var(--dark);}
-
-/* VENDOR FLOW */
-.flow-section{background:var(--dark2);border-top:1px solid rgba(255,107,157,0.08);border-bottom:1px solid rgba(255,107,157,0.08);}
+.plw{max-width:1000px;margin:0 auto;}
+.plgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-top:40px;}
+.plc{background:var(--dk3);border:1px solid rgba(255,107,157,0.1);border-radius:14px;padding:24px 17px;text-align:center;transition:all 0.35s;position:relative;}
+.plc:hover{border-color:rgba(255,107,157,0.4);transform:translateY(-4px);}
+.plhot{background:linear-gradient(135deg,var(--pk),#e0477a);border-color:var(--pk)!important;box-shadow:0 8px 38px var(--pkg);}
+.plbadge{position:absolute;top:10px;right:10px;background:var(--yl);color:var(--dk);font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:50px;}
+.pld{font-size:0.66rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--pk2);margin-bottom:8px;}
+.plhot .pld{color:rgba(255,255,255,0.8);}
+.plpr{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:2px;}
+.plsv{font-size:0.68rem;color:var(--gn);font-weight:600;margin-bottom:14px;min-height:14px;}
+.plhot .plsv{color:var(--yl);}
+.plf{list-style:none;margin-bottom:16px;text-align:left;}
+.plf li{font-size:0.76rem;color:var(--wh2);padding:4px 0;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,245,248,0.05);}
+.plhot .plf li{color:rgba(255,255,255,0.8);}
+.plf li:last-child{border:none;}
+.ck{color:var(--gn);font-size:0.78rem;}.plhot .ck{color:var(--yl);}
+.plbtn{width:100%;padding:10px;border-radius:50px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Plus Jakarta Sans',sans-serif;border:none;}
+.plbtn-o{background:transparent;border:1.5px solid rgba(255,107,157,0.35)!important;color:var(--wh);}
+.plbtn-o:hover{background:var(--pk);border-color:var(--pk)!important;color:white;}
+.plbtn-w{background:white;color:var(--pk);}.plbtn-w:hover{background:var(--yl);color:var(--dk);}
 
 /* PAYMENT */
-.payment-section{max-width:700px;margin:0 auto;text-align:center;}
-.payment-box{
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.2);
-  border-radius:20px;padding:48px 40px;margin-top:48px;
-  position:relative;overflow:hidden;
-}
-.payment-box::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at top,rgba(255,107,157,0.07),transparent 60%);
-}
-.payment-bank{
-  display:flex;align-items:center;gap:16px;
-  background:var(--dark4);border:1px solid rgba(255,107,157,0.15);
-  border-radius:14px;padding:24px;margin:32px 0;
-  position:relative;
-}
-.bank-logo{
-  width:52px;height:52px;border-radius:12px;
-  background:linear-gradient(135deg,#7B2FBE,#4C1B8C);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;flex-shrink:0;
-}
-.bank-info{text-align:left;flex:1;}
-.bank-name{font-size:0.72rem;color:var(--white2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;}
-.bank-number{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--white);letter-spacing:3px;}
-.bank-holder{font-size:0.82rem;color:var(--pink2);margin-top:4px;font-weight:500;}
-.copy-btn{
-  background:rgba(255,107,157,0.15);border:1px solid rgba(255,107,157,0.25);
-  color:var(--pink);padding:10px 18px;border-radius:10px;
-  font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.3s;
-  font-family:'Plus Jakarta Sans',sans-serif;flex-shrink:0;
-}
-.copy-btn:hover{background:var(--pink);color:white;}
-.payment-note{
-  background:rgba(255,209,102,0.08);border:1px solid rgba(255,209,102,0.2);
-  border-radius:12px;padding:16px 20px;
-  font-size:0.85rem;color:rgba(255,209,102,0.9);line-height:1.6;text-align:left;
-}
-.payment-note strong{color:var(--yellow);}
+.paybox{background:var(--dk3);border:1px solid rgba(255,107,157,0.2);border-radius:17px;padding:32px 26px;margin-top:32px;max-width:520px;margin-left:auto;margin-right:auto;}
+.bankrow{display:flex;align-items:center;gap:13px;background:var(--dk4);border:1px solid rgba(255,107,157,0.15);border-radius:12px;padding:17px;margin:18px 0;flex-wrap:wrap;}
+.blogo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#7B2FBE,#4C1B8C);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.binfo{text-align:left;flex:1;}
+.bname{font-size:0.66rem;color:var(--wh2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px;}
+.bnum{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;letter-spacing:3px;}
+.bholder{font-size:0.76rem;color:var(--pk2);margin-top:2px;font-weight:500;}
+.cpybtn{background:rgba(255,107,157,0.15);border:1px solid rgba(255,107,157,0.25)!important;color:var(--pk);padding:7px 13px;border-radius:8px;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Plus Jakarta Sans',sans-serif;flex-shrink:0;}
+.cpybtn:hover{background:var(--pk);color:white;}
+.pnote{background:rgba(255,209,102,0.08);border:1px solid rgba(255,209,102,0.2)!important;border-radius:10px;padding:12px 15px;font-size:0.79rem;color:rgba(255,209,102,0.9);line-height:1.6;}
+.pnote strong{color:var(--yl);}
 
-/* REGISTER FORM */
-.register-section{max-width:680px;margin:0 auto;}
-.form-card{
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.15);
-  border-radius:20px;padding:48px 40px;margin-top:48px;
-}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-group{margin-bottom:20px;}
-.form-label{
-  display:block;font-size:0.75rem;font-weight:600;
-  letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--pink2);margin-bottom:8px;
-}
-.form-input{
-  width:100%;background:var(--dark4);
-  border:1.5px solid rgba(255,245,248,0.08);
-  color:var(--white);padding:14px 18px;border-radius:12px;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;
-  outline:none;transition:all 0.3s;
-}
-.form-input:focus{border-color:rgba(255,107,157,0.5);box-shadow:0 0 0 3px rgba(255,107,157,0.08);}
-.form-input::placeholder{color:rgba(255,245,248,0.25);}
-.form-input option{background:var(--dark4);}
-.form-divider{
-  display:flex;align-items:center;gap:16px;margin:28px 0;
-}
-.form-divider::before,.form-divider::after{
-  content:'';flex:1;height:1px;background:rgba(255,245,248,0.08);
-}
-.form-divider span{font-size:0.75rem;color:var(--white2);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
+/* FORMS */
+.fw{max-width:600px;margin:0 auto;}
+.fcard{background:var(--dk3);border:1px solid rgba(255,107,157,0.15);border-radius:17px;padding:32px 26px;margin-top:32px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{margin-bottom:15px;}
+.fl{display:block;font-size:0.68rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--pk2);margin-bottom:6px;}
+.fi{width:100%;background:var(--dk4);border:1.5px solid rgba(255,245,248,0.08)!important;color:var(--wh);padding:11px 14px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.84rem;outline:none;transition:all 0.3s;}
+.fi:focus{border-color:rgba(255,107,157,0.5)!important;box-shadow:0 0 0 3px rgba(255,107,157,0.08);}
+.fi::placeholder{color:rgba(255,245,248,0.25);}.fi option{background:var(--dk4);}
+textarea.fi{resize:vertical;min-height:78px;}
 
-/* PRODUCT LIMIT */
-.limit-bar{
-  background:var(--dark4);border-radius:50px;height:8px;
-  overflow:hidden;margin-top:8px;
-}
-.limit-fill{
-  height:100%;background:linear-gradient(90deg,var(--pink),var(--yellow));
-  border-radius:50px;transition:width 0.5s ease;
-}
-.limit-text{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--white2);margin-top:6px;}
+/* PHOTO UPLOAD - big and clear */
+.phu{width:100%;background:var(--dk4);border:2px dashed rgba(255,107,157,0.3)!important;border-radius:14px;padding:0;text-align:center;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.phu:hover{border-color:rgba(255,107,157,0.6)!important;background:rgba(255,107,157,0.04);}
+.phu input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:2;}
+.phu-inner{padding:28px;text-align:center;pointer-events:none;}
+.phu-icon{font-size:2.5rem;margin-bottom:10px;display:block;}
+.phu-title{font-size:0.95rem;font-weight:600;color:var(--wh);margin-bottom:6px;}
+.phu-sub{font-size:0.76rem;color:var(--pk);font-weight:500;}
+.phu-hint{font-size:0.7rem;color:var(--wh2);margin-top:4px;}
+.phu-preview{width:100%;max-height:280px;object-fit:cover;display:none;border-radius:12px;}
+.phu-preview-wrap{position:relative;display:none;width:100%;}
+.phu-preview-wrap img{width:100%;max-height:280px;object-fit:cover;border-radius:12px;}
+.phu-change{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.7);color:white;border:none;padding:7px 14px;border-radius:50px;font-size:0.74rem;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;z-index:3;}
 
-/* PRODUCT CARDS */
-.products-section{max-width:1100px;margin:0 auto;}
-.products-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
-.product-card{
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.08);
-  border-radius:16px;overflow:hidden;transition:all 0.35s;cursor:pointer;
-}
-.product-card:hover{border-color:rgba(255,107,157,0.35);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.4);}
-.product-img{
-  height:180px;display:flex;align-items:center;justify-content:center;
-  font-size:3.5rem;position:relative;
-}
-.product-tag{
-  position:absolute;top:10px;left:10px;
-  background:linear-gradient(135deg,var(--pink),#e0477a);
-  color:white;font-size:0.62rem;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;
-  padding:4px 10px;border-radius:50px;
-}
-.product-body{padding:18px;}
-.product-vendor{font-size:0.7rem;color:var(--pink);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
-.product-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:6px;}
-.product-price{font-size:1rem;font-weight:600;color:var(--yellow);margin-bottom:14px;}
-.wa-btn{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;padding:11px;border-radius:50px;
-  background:transparent;border:1.5px solid rgba(255,107,157,0.25);
-  color:var(--white);font-size:0.8rem;font-weight:600;
-  cursor:pointer;transition:all 0.3s;font-family:'Plus Jakarta Sans',sans-serif;
-  text-decoration:none;
-}
-.wa-btn:hover{background:#25D366;border-color:#25D366;color:white;}
+.progsteps{display:flex;gap:6px;margin-bottom:22px;}
+.ps{flex:1;height:4px;border-radius:50px;background:rgba(255,245,248,0.1);transition:background 0.3s;}
+.ps.active{background:linear-gradient(90deg,var(--pk),var(--yl));}
+.plopt{display:flex;justify-content:space-between;align-items:center;background:var(--dk4);border:1.5px solid rgba(255,107,157,0.1)!important;border-radius:10px;padding:11px 15px;cursor:pointer;transition:all 0.2s;font-size:0.82rem;margin-bottom:8px;}
+.plopt:hover,.plopt.sel{border-color:var(--pk)!important;background:rgba(255,107,157,0.08);}
+.plopt.sel{box-shadow:0 0 0 1px var(--pk);}
+.plopt-p{color:var(--pk);font-weight:700;}
 
-/* TOAST */
-.toast{
-  position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.3);
-  color:var(--white);padding:14px 28px;border-radius:50px;
-  font-size:0.88rem;font-weight:500;z-index:9999;
-  transition:transform 0.4s ease;pointer-events:none;
-  box-shadow:0 8px 30px rgba(0,0,0,0.4);
-}
-.toast.show{transform:translateX(-50%) translateY(0);}
+/* VENDOR DASHBOARD */
+.dw{max-width:740px;margin:0 auto;padding:95px 22px 55px;}
+.dhead{background:var(--dk3);border:1px solid rgba(255,107,157,0.15);border-radius:17px;padding:22px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.dav{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--pk),var(--yl));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.dinfo h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;}
+.dinfo p{font-size:0.78rem;color:var(--wh2);margin-top:2px;}
+.dbadge{margin-left:auto;font-size:0.68rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:50px;}
+.active-b{background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.25)!important;color:var(--gn);}
+.pending-b{background:rgba(255,209,102,0.1);border:1px solid rgba(255,209,102,0.25)!important;color:var(--yl);}
+.dstats{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:20px;}
+.ds{background:var(--dk3);border:1px solid rgba(255,107,157,0.08);border-radius:12px;padding:16px;text-align:center;}
+.dsn{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--pk);}
+.dsl{font-size:0.68rem;color:var(--wh2);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.dpbox{background:var(--dk3);border:1px solid rgba(255,107,157,0.1);border-radius:17px;padding:20px;}
+.dpbox h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;}
+
+/* DASHBOARD PRODUCT LIST - thumbnail style */
+.dplist{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+.dpi{background:var(--dk4);border-radius:12px;overflow:hidden;border:1px solid rgba(255,107,157,0.06);position:relative;}
+.dpi-img-wrap{width:100%;padding-top:100%;position:relative;overflow:hidden;}
+.dpi-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+.dpi-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:var(--dk3);}
+.dpi-info{padding:10px;}
+.dpinn{font-size:0.8rem;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dpip{font-size:0.72rem;color:var(--yl);}
+.dpi-status{font-size:0.6rem;margin-top:3px;}
+.dpi-del{position:absolute;top:7px;right:7px;background:rgba(255,71,87,0.85);border:none;color:white;width:24px;height:24px;border-radius:50%;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.dpi-del:hover{background:var(--red);transform:scale(1.1);}
+
+.lbar{background:var(--dk4);border-radius:50px;height:6px;overflow:hidden;margin-top:6px;}
+.lfill{height:100%;background:linear-gradient(90deg,var(--pk),var(--yl));border-radius:50px;transition:width 0.5s;}
+
+/* ADMIN */
+.admin-wrap{max-width:900px;margin:0 auto;padding:95px 22px 55px;}
+.admin-header{background:linear-gradient(135deg,var(--dk3),#1a0d10);border:1px solid rgba(255,107,157,0.25);border-radius:17px;padding:24px;margin-bottom:22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.admin-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--pk),var(--yl));display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 0 20px var(--pkg);}
+.admin-info h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;}
+.admin-info p{font-size:0.78rem;color:var(--pk2);margin-top:2px;}
+.admin-logout{margin-left:auto;background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.2)!important;color:var(--red);padding:8px 16px;border-radius:50px;font-size:0.74rem;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
+.admin-logout:hover{background:var(--red);color:white;}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px;}
+.as{background:var(--dk3);border:1px solid rgba(255,107,157,0.08);border-radius:12px;padding:18px;text-align:center;}
+.asn{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--pk);}
+.asl{font-size:0.66rem;color:var(--wh2);letter-spacing:1px;text-transform:uppercase;margin-top:3px;}
+.admin-tabs{display:flex;gap:0;background:var(--dk3);border:1px solid rgba(255,107,157,0.1);border-radius:12px;overflow:hidden;margin-bottom:20px;}
+.atab{flex:1;padding:13px;text-align:center;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.3s;border:none;background:transparent;color:var(--wh2);font-family:'Plus Jakarta Sans',sans-serif;}
+.atab.active{background:linear-gradient(135deg,var(--pk),#e0477a);color:white;}
+.atab-content{display:none;}.atab-content.active{display:block;}
+
+/* ADMIN PRODUCT GRID */
+.admin-pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;}
+.apc{background:var(--dk3);border:1px solid rgba(255,107,157,0.1);border-radius:14px;overflow:hidden;transition:all 0.3s;}
+.apc-img-wrap{width:100%;padding-top:100%;position:relative;overflow:hidden;}
+.apc-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+.apc-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--dk4);}
+.apc-info{padding:14px;}
+.apc-name{font-size:0.86rem;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.apc-sub{font-size:0.72rem;color:var(--wh2);margin-bottom:10px;}
+.apc-actions{display:flex;gap:6px;}
+.tag-approved{font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:50px;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.2)!important;color:var(--gn);}
+.tag-pending{font-size:0.6rem;font-weight:700;padding:3px 8px;border-radius:50px;background:rgba(255,209,102,0.1);border:1px solid rgba(255,209,102,0.2)!important;color:var(--yl);}
+
+.vendor-card{background:var(--dk3);border:1px solid rgba(255,107,157,0.1);border-radius:13px;padding:18px;margin-bottom:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.vc-info{flex:1;}
+.vc-name{font-size:0.94rem;font-weight:600;margin-bottom:2px;}
+.vc-sub{font-size:0.76rem;color:var(--wh2);}
+.vc-plan{font-size:0.7rem;color:var(--pk);font-weight:600;background:rgba(255,107,157,0.1);padding:3px 10px;border-radius:50px;margin-left:8px;}
+.vc-actions{display:flex;gap:8px;}
+
+.admin-upload-box{background:var(--dk3);border:1px solid rgba(255,107,157,0.15);border-radius:14px;padding:24px;margin-bottom:14px;}
+.admin-upload-box h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;}
+.admin-upload-box .desc{font-size:0.8rem;color:var(--wh2);margin-bottom:18px;}
+.empty-state{text-align:center;padding:32px;color:var(--wh2);font-size:0.84rem;}
+
+/* LOGIN */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px;}
+.login-card{background:var(--dk3);border:1px solid rgba(255,107,157,0.2);border-radius:20px;padding:44px 36px;max-width:380px;width:100%;text-align:center;position:relative;overflow:hidden;}
+.login-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(255,107,157,0.07),transparent 60%);}
+.login-icon{font-size:3rem;margin-bottom:14px;}
+.login-card h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:6px;}
+.login-card p{font-size:0.83rem;color:var(--wh2);margin-bottom:28px;}
+.login-error{background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.2)!important;color:var(--red);padding:10px 16px;border-radius:9px;font-size:0.8rem;margin-bottom:16px;display:none;}
 
 /* MODAL */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,0.88);
-  backdrop-filter:blur(12px);z-index:1000;
-  display:none;align-items:center;justify-content:center;padding:20px;
-}
-.modal-overlay.active{display:flex;}
-.modal{
-  background:var(--dark3);border:1px solid rgba(255,107,157,0.2);
-  border-radius:20px;padding:44px 40px;max-width:520px;width:100%;
-  position:relative;animation:modalIn 0.3s ease;max-height:90vh;overflow-y:auto;
-}
-.modal-close{
-  position:absolute;top:16px;right:20px;background:none;border:none;
-  color:var(--white2);font-size:1.6rem;cursor:pointer;transition:color 0.3s;line-height:1;
-}
-.modal-close:hover{color:var(--pink);}
-.modal h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:8px;}
-.modal p{font-size:0.88rem;color:var(--white2);margin-bottom:28px;line-height:1.6;}
+.moverlay{position:fixed;inset:0;background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);z-index:1000;display:none;align-items:center;justify-content:center;padding:18px;}
+.moverlay.active{display:flex;}
+.modal{background:var(--dk3);border:1px solid rgba(255,107,157,0.2);border-radius:17px;padding:30px 24px;max-width:460px;width:100%;position:relative;animation:modalIn 0.3s ease;max-height:90vh;overflow-y:auto;}
+.mclose{position:absolute;top:12px;right:15px;background:none;border:none;color:var(--wh2);font-size:1.4rem;cursor:pointer;line-height:1;}
+.mclose:hover{color:var(--pk);}
+.modal h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:5px;}
+.modal p{font-size:0.81rem;color:var(--wh2);margin-bottom:20px;line-height:1.6;}
 
-/* PROGRESS */
-.progress-steps{display:flex;gap:8px;margin-bottom:32px;}
-.progress-step{
-  flex:1;height:4px;border-radius:50px;
-  background:rgba(255,245,248,0.1);transition:background 0.3s;
-}
-.progress-step.active{background:linear-gradient(90deg,var(--pink),var(--yellow));}
+.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--dk3);border:1px solid rgba(255,107,157,0.3)!important;color:var(--wh);padding:11px 22px;border-radius:50px;font-size:0.82rem;font-weight:500;z-index:9999;transition:transform 0.4s ease;pointer-events:none;box-shadow:0 8px 28px rgba(0,0,0,0.4);}
+.toast.show{transform:translateX(-50%) translateY(0);}
 
-/* FOOTER */
-footer{
-  background:var(--dark2);border-top:1px solid rgba(255,107,157,0.08);
-  padding:60px 32px 32px;
-}
-.footer-inner{max-width:1100px;margin:0 auto;}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px;}
-.footer-brand p{font-size:0.85rem;color:var(--white2);line-height:1.7;margin-top:14px;font-weight:300;max-width:280px;}
-.footer-col h4{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-bottom:18px;}
-.footer-col a{display:block;color:var(--white2);text-decoration:none;font-size:0.85rem;margin-bottom:10px;transition:color 0.3s;font-weight:300;}
-.footer-col a:hover{color:var(--pink);}
-.footer-bottom{border-top:1px solid rgba(255,245,248,0.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.footer-bottom p{font-size:0.78rem;color:rgba(255,245,248,0.25);}
-.footer-bottom span{color:var(--pink);}
+footer{background:var(--dk2);border-top:1px solid rgba(255,107,157,0.08);padding:42px 22px 24px;}
+.fi2{max-width:1040px;margin:0 auto;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:42px;margin-bottom:32px;}
+.fb p{font-size:0.79rem;color:var(--wh2);line-height:1.7;margin-top:10px;font-weight:300;max-width:240px;}
+.fc h4{font-size:0.64rem;letter-spacing:2px;text-transform:uppercase;color:var(--pk);margin-bottom:13px;}
+.fc a{display:block;color:var(--wh2);text-decoration:none;font-size:0.79rem;margin-bottom:8px;transition:color 0.3s;font-weight:300;cursor:pointer;}
+.fc a:hover{color:var(--pk);}
+.fbot{border-top:1px solid rgba(255,245,248,0.05);padding-top:17px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;}
+.fbot p{font-size:0.71rem;color:rgba(255,245,248,0.25);}
+.fbot span{color:var(--pk);}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes modalIn{from{opacity:0;transform:scale(0.94);}to{opacity:1;transform:scale(1);}}
-
-@media(max-width:768px){
-  nav{padding:14px 20px;}
-  .nav-right .nav-btn-ghost{display:none;}
-  section{padding:70px 20px;}
-  .hero{padding:100px 20px 60px;}
-  .form-row{grid-template-columns:1fr;}
-  .footer-top{grid-template-columns:1fr;gap:36px;}
-  .modal{padding:32px 24px;}
-  .payment-bank{flex-wrap:wrap;}
-  .hero-badges{gap:12px;}
-}
+@media(max-width:768px){nav{padding:10px 15px;}.ng{display:none;}sec{padding:52px 15px;}.frow{grid-template-columns:1fr;}.ft{grid-template-columns:1fr;gap:26px;}.modal{padding:24px 16px;}.admin-stats{grid-template-columns:repeat(2,1fr);}.bankrow{flex-wrap:wrap;}.pgrid{grid-template-columns:repeat(2,1fr);gap:12px;}.dplist{grid-template-columns:repeat(2,1fr);}.admin-pgrid{grid-template-columns:repeat(2,1fr);}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="logo">
+  <div class="logo" onclick="showPage('home')">
     <div class="logo-icon">🛍️</div>
     <span class="logo-text">Glanz<span>markt</span></span>
-  </a>
+  </div>
   <div class="nav-right">
-    <a href="#shop" class="nav-btn nav-btn-ghost">Browse</a>
-    <a href="#plans" class="nav-btn nav-btn-ghost">Plans</a>
-    <button class="nav-btn nav-btn-pink" onclick="openModal('register')">Join as Vendor</button>
+    <button class="nb ng" onclick="showPage('shop')">Browse</button>
+    <button class="nb ng" onclick="showPage('plans')">Plans</button>
+    <button class="nb np" onclick="showPage('register')">Sell Free</button>
+    <button class="nb" style="background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.2)!important;color:var(--pk2);font-size:0.68rem;" onclick="showPage('admin-login')">⚙️</button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-orb1"></div>
-  <div class="hero-orb2"></div>
-  <div style="position:relative;z-index:2;max-width:780px;margin:0 auto;">
-    <div class="hero-tag">🇳🇬 Nigeria's Free Marketplace</div>
-    <h1>Buy & Sell <span class="pink">Freely.</span><br>Shop <span class="yellow">Brilliantly.</span></h1>
-    <p>Glanzmarkt is a free, open marketplace where every Nigerian vendor can list products and reach buyers instantly — no hassle, just business.</p>
-    <div class="hero-btns">
-      <a href="#shop" class="btn-big btn-pink">Browse Products</a>
-      <button class="btn-big btn-outline" onclick="openModal('register')">Start Selling Free</button>
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="orb" style="width:480px;height:480px;background:radial-gradient(circle,rgba(255,107,157,0.09) 0%,transparent 70%);top:-70px;left:-70px;"></div>
+    <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(255,209,102,0.06) 0%,transparent 70%);bottom:0;right:-30px;"></div>
+    <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;">
+      <div class="htag">🇳🇬 Nigeria's Free Marketplace</div>
+      <h1>Buy & Sell <span class="pk">Freely.</span><br>Shop <span class="yl">Brilliantly.</span></h1>
+      <p>Post real product photos and reach buyers instantly via WhatsApp. Free for every Nigerian vendor.</p>
+      <div class="hbtns">
+        <button class="btn btn-pk" onclick="showPage('shop')">Browse Products</button>
+        <button class="btn btn-ol" onclick="showPage('register')">Start Selling Free</button>
+      </div>
+      <div class="hbadges">
+        <div class="hbadge"><span>🆓</span><span>Free to Join</span></div>
+        <div class="hbadge"><span>📸</span><span>Real Photo Upload</span></div>
+        <div class="hbadge"><span>📦</span><span>5 Items Max</span></div>
+        <div class="hbadge"><span>📲</span><span>WhatsApp Orders</span></div>
+      </div>
     </div>
-    <div class="hero-badges">
-      <div class="badge"><span class="badge-icon">🆓</span><span>Free to Join</span></div>
-      <div class="badge"><span class="badge-icon">📦</span><span>5 Items Per Vendor</span></div>
-      <div class="badge"><span class="badge-icon">📲</span><span>WhatsApp Orders</span></div>
-      <div class="badge"><span class="badge-icon">⚡</span><span>10 Posts Daily</span></div>
+  </section>
+  <sec class="sbg">
+    <div style="max-width:920px;margin:0 auto;text-align:center;">
+      <span class="stag">How It Works</span><h2 class="stitle">Simple 4 Steps</h2>
+      <div class="sgrid">
+        <div class="sc"><div class="sn">1</div><h3>Register Free</h3><p>Fill your details in 2 minutes.</p></div>
+        <div class="sc"><div class="sn">2</div><h3>Upload Real Photos</h3><p>Take a photo and upload it directly.</p></div>
+        <div class="sc"><div class="sn">3</div><h3>Choose Plan</h3><p>Pick an affordable monthly plan.</p></div>
+        <div class="sc"><div class="sn">4</div><h3>Get WhatsApp Orders</h3><p>Buyers tap to order directly.</p></div>
+      </div>
     </div>
-  </div>
-</section>
+  </sec>
+  <sec>
+    <div class="pw">
+      <div class="ph2"><div><span class="stag">Live Now</span><h2 class="stitle">Featured Products</h2></div><button class="btn btn-pk btn-sm" onclick="showPage('shop')">View All</button></div>
+      <div class="pgrid" id="featGrid"></div>
+    </div>
+  </sec>
+  <footer>
+    <div class="fi2">
+      <div class="ft">
+        <div class="fb"><div class="logo" onclick="showPage('home')"><div class="logo-icon">🛍️</div><span class="logo-text">Glanz<span>markt</span></span></div><p>Nigeria's free marketplace. Every vendor deserves a platform.</p></div>
+        <div class="fc"><h4>Marketplace</h4><a onclick="showPage('shop')">Browse Products</a><a onclick="showPage('plans')">View Plans</a><a onclick="showPage('payment')">Payment Info</a></div>
+        <div class="fc"><h4>Vendors</h4><a onclick="showPage('register')">Register Store</a><a onclick="showPage('dashboard')">My Dashboard</a><a href="https://wa.me/2348135327325" target="_blank">Contact Us</a></div>
+      </div>
+      <div class="fbot"><p>© 2026 Glanzmarkt. All rights reserved.</p><p>Made with <span>♥</span> in Nigeria</p></div>
+    </div>
+  </footer>
+</div>
 
-<!-- HOW IT WORKS -->
-<section class="steps-section">
-  <div style="max-width:1000px;margin:0 auto;text-align:center;">
-    <span class="section-tag">Simple Process</span>
-    <h2 class="section-title">How Glanzmarkt Works</h2>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <h3>Register Your Store</h3>
-        <p>Fill in your business details — name, phone, category. Takes less than 2 minutes.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <h3>Post Your Products</h3>
-        <p>Add up to 5 products with photos, prices and descriptions. Up to 10 posts per day.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <h3>Choose a Plan</h3>
-        <p>Pick a monthly plan that fits your budget. Pay once and stay active all month.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">4</div>
-        <h3>Receive Orders</h3>
-        <p>Buyers contact you directly on WhatsApp. You handle delivery your way.</p>
-      </div>
+<!-- SHOP -->
+<div id="page-shop" class="page">
+  <sec style="padding-top:90px;">
+    <div class="pw">
+      <div class="ph2"><div><span class="stag">All Products</span><h2 class="stitle">Shop Glanzmarkt</h2></div><button class="btn btn-pk btn-sm" onclick="showPage('post')">+ Post Product</button></div>
+      <div class="pgrid" id="shopGrid"></div>
     </div>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="shop">
-  <div class="products-section">
-    <div class="products-header">
-      <div>
-        <span class="section-tag">Live Listings</span>
-        <h2 class="section-title">Products on Glanzmarkt</h2>
-      </div>
-      <button class="btn-big btn-pink" style="padding:12px 28px;font-size:0.82rem;" onclick="openModal('post')">+ Post Your Product</button>
-    </div>
-    <div class="products-grid" id="productsGrid"></div>
-  </div>
-</section>
+  </sec>
+</div>
 
 <!-- PLANS -->
-<section id="plans" style="background:var(--dark2);border-top:1px solid rgba(255,107,157,0.08);border-bottom:1px solid rgba(255,107,157,0.08);">
-  <div class="plans-section">
-    <div class="center">
-      <span class="section-tag">Pricing Plans</span>
-      <h2 class="section-title">Choose Your Plan</h2>
-      <p class="section-sub">All plans include full access to post products and receive orders on WhatsApp.</p>
+<div id="page-plans" class="page">
+  <sec style="padding-top:90px;">
+    <div class="plw">
+      <div class="ctr"><span class="stag">Pricing</span><h2 class="stitle">Choose Your Plan</h2><p class="ssub">All plans include real photo upload and WhatsApp orders.</p></div>
+      <div class="plgrid">
+        <div class="plc"><div class="pld">1 Month</div><div class="plpr">₦800</div><div class="plsv"></div><ul class="plf"><li><span class="ck">✓</span>5 products</li><li><span class="ck">✓</span>Photo upload</li><li><span class="ck">✓</span>WhatsApp orders</li></ul><button class="plbtn plbtn-o" onclick="openPay('1 Month','₦800')">Get Started</button></div>
+        <div class="plc"><div class="pld">2 Months</div><div class="plpr">₦1,500</div><div class="plsv">Save ₦100</div><ul class="plf"><li><span class="ck">✓</span>5 products</li><li><span class="ck">✓</span>Photo upload</li><li><span class="ck">✓</span>WhatsApp orders</li></ul><button class="plbtn plbtn-o" onclick="openPay('2 Months','₦1,500')">Get Started</button></div>
+        <div class="plc plhot"><div class="plbadge">Popular</div><div class="pld">3 Months</div><div class="plpr">₦1,800</div><div class="plsv">Save ₦600</div><ul class="plf"><li><span class="ck">✓</span>5 products</li><li><span class="ck">✓</span>Photo upload</li><li><span class="ck">✓</span>WhatsApp orders</li></ul><button class="plbtn plbtn-w" onclick="openPay('3 Months','₦1,800')">Get Started</button></div>
+        <div class="plc"><div class="pld">6 Months</div><div class="plpr">₦3,000</div><div class="plsv">Save ₦1,800</div><ul class="plf"><li><span class="ck">✓</span>5 products</li><li><span class="ck">✓</span>Photo upload</li><li><span class="ck">✓</span>WhatsApp orders</li></ul><button class="plbtn plbtn-o" onclick="openPay('6 Months','₦3,000')">Get Started</button></div>
+        <div class="plc"><div class="pld">8 Months</div><div class="plpr">₦3,800</div><div class="plsv">🔥 Best Value!</div><ul class="plf"><li><span class="ck">✓</span>5 products</li><li><span class="ck">✓</span>Photo upload</li><li><span class="ck">✓</span>WhatsApp orders</li></ul><button class="plbtn plbtn-o" onclick="openPay('8 Months','₦3,800')">Get Started</button></div>
+      </div>
     </div>
-    <div class="plans-grid">
+  </sec>
+</div>
 
-      <div class="plan-card">
-        <div class="plan-duration">1 Month</div>
-        <div class="plan-price">₦800</div>
-        <div class="plan-save"></div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 5 product listings</li>
-          <li><span class="check">✓</span> 10 posts/day</li>
-          <li><span class="check">✓</span> WhatsApp orders</li>
-          <li><span class="check">✓</span> Store profile</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline" onclick="openPayment('1 Month','₦800')">Get Started</button>
+<!-- PAYMENT -->
+<div id="page-payment" class="page">
+  <sec style="padding-top:90px;">
+    <div style="max-width:520px;margin:0 auto;text-align:center;">
+      <span class="stag">Payment</span><h2 class="stitle">How to Pay</h2>
+      <p class="ssub" style="margin:0 auto;">Transfer your fee then send receipt on WhatsApp to activate.</p>
+      <div class="paybox">
+        <div class="bankrow"><div class="blogo">💜</div><div class="binfo"><div class="bname">Opay</div><div class="bnum">8135327325</div><div class="bholder">Odion Favour Oseriemen</div></div><button class="cpybtn" onclick="copyAcct()">Copy</button></div>
+        <div class="pnote"><strong>📌 After payment:</strong> Send screenshot + business name to WhatsApp. Activates within 2 hours.</div>
+        <a href="https://wa.me/2348135327325?text=Hello!%20I%20paid%20for%20Glanzmarkt.%20Here%20is%20my%20receipt%3A" target="_blank" class="btn btn-pk" style="margin-top:20px;display:inline-block;">📲 Send Receipt on WhatsApp</a>
       </div>
-
-      <div class="plan-card">
-        <div class="plan-duration">2 Months</div>
-        <div class="plan-price">₦1,500</div>
-        <div class="plan-save">Save ₦100</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 5 product listings</li>
-          <li><span class="check">✓</span> 10 posts/day</li>
-          <li><span class="check">✓</span> WhatsApp orders</li>
-          <li><span class="check">✓</span> Store profile</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline" onclick="openPayment('2 Months','₦1,500')">Get Started</button>
-      </div>
-
-      <div class="plan-card plan-popular">
-        <div class="plan-popular-badge">Popular</div>
-        <div class="plan-duration">3 Months</div>
-        <div class="plan-price">₦1,800</div>
-        <div class="plan-save">Save ₦600</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 5 product listings</li>
-          <li><span class="check">✓</span> 10 posts/day</li>
-          <li><span class="check">✓</span> WhatsApp orders</li>
-          <li><span class="check">✓</span> Store profile</li>
-        </ul>
-        <button class="plan-btn plan-btn-white" onclick="openPayment('3 Months','₦1,800')">Get Started</button>
-      </div>
-
-      <div class="plan-card">
-        <div class="plan-duration">6 Months</div>
-        <div class="plan-price">₦3,000</div>
-        <div class="plan-save">Save ₦1,800</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 5 product listings</li>
-          <li><span class="check">✓</span> 10 posts/day</li>
-          <li><span class="check">✓</span> WhatsApp orders</li>
-          <li><span class="check">✓</span> Store profile</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline" onclick="openPayment('6 Months','₦3,000')">Get Started</button>
-      </div>
-
-      <div class="plan-card">
-        <div class="plan-duration">8 Months</div>
-        <div class="plan-price">₦3,800</div>
-        <div class="plan-save">Best Value! Save ₦2,600</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 5 product listings</li>
-          <li><span class="check">✓</span> 10 posts/day</li>
-          <li><span class="check">✓</span> WhatsApp orders</li>
-          <li><span class="check">✓</span> Store profile</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline" onclick="openPayment('8 Months','₦3,800')">Get Started</button>
-      </div>
-
     </div>
-  </div>
-</section>
+  </sec>
+</div>
 
-<!-- PAYMENT INFO -->
-<section id="payment">
-  <div class="payment-section">
-    <span class="section-tag">Payment</span>
-    <h2 class="section-title">How to Pay</h2>
-    <p class="section-sub">After choosing your plan, make a transfer to the account below and send your receipt on WhatsApp to activate your store.</p>
-    <div class="payment-box">
-      <p style="font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--white2);margin-bottom:4px;">Payment Account</p>
-      <div class="payment-bank">
-        <div class="bank-logo">💜</div>
-        <div class="bank-info">
-          <div class="bank-name">Opay</div>
-          <div class="bank-number">8135327325</div>
-          <div class="bank-holder">Odion Favour Oseriemen</div>
+<!-- REGISTER -->
+<div id="page-register" class="page">
+  <sec style="padding-top:90px;">
+    <div class="fw">
+      <div class="ctr" style="margin-bottom:5px;"><span class="stag">Join Free</span><h2 class="stitle">Register Your Store 🛍️</h2></div>
+      <div class="fcard">
+        <div class="progsteps"><div class="ps active" id="p1"></div><div class="ps" id="p2"></div><div class="ps" id="p3"></div></div>
+        <div id="s1">
+          <p style="font-size:0.81rem;color:var(--wh2);margin-bottom:16px;">Step 1 of 3 — Personal Details</p>
+          <div class="frow"><div class="fg"><label class="fl">First Name</label><input class="fi" id="rFN" placeholder="e.g. Amaka"></div><div class="fg"><label class="fl">Last Name</label><input class="fi" id="rLN" placeholder="e.g. Okafor"></div></div>
+          <div class="fg"><label class="fl">WhatsApp Number</label><input class="fi" id="rPh" type="tel" placeholder="e.g. 08012345678"></div>
+          <div class="fg"><label class="fl">Email</label><input class="fi" id="rEm" type="email" placeholder="e.g. amaka@gmail.com"></div>
+          <button class="btn btn-pk" style="width:100%;margin-top:3px;" onclick="rNext(1)">Continue →</button>
         </div>
-        <button class="copy-btn" onclick="copyAccount()">Copy</button>
+        <div id="s2" style="display:none;">
+          <p style="font-size:0.81rem;color:var(--wh2);margin-bottom:16px;">Step 2 of 3 — Business Details</p>
+          <div class="fg"><label class="fl">Store Name</label><input class="fi" id="rBz" placeholder="e.g. Amaka's Fashion Store"></div>
+          <div class="fg"><label class="fl">Category</label><select class="fi" id="rCt"><option value="">Select category</option><option>👗 Fashion & Clothing</option><option>💄 Beauty & Skincare</option><option>🍔 Food & Drinks</option><option>📱 Electronics</option><option>🏠 Home & Living</option><option>👟 Shoes & Bags</option><option>💎 Accessories</option><option>🌿 Health & Wellness</option><option>Other</option></select></div>
+          <div class="fg"><label class="fl">State / Location</label><input class="fi" id="rLc" placeholder="e.g. Lagos, Ibadan, Abuja"></div>
+          <div style="display:flex;gap:9px;margin-top:3px;"><button class="btn btn-ol" style="flex:1;" onclick="rBack(2)">← Back</button><button class="btn btn-pk" style="flex:2;" onclick="rNext(2)">Continue →</button></div>
+        </div>
+        <div id="s3" style="display:none;">
+          <p style="font-size:0.81rem;color:var(--wh2);margin-bottom:13px;">Step 3 of 3 — Choose Your Plan</p>
+          <div id="planOpts">
+            <div class="plopt" data-plan="1 Month" data-price="₦800" onclick="selPlan(this)"><span>1 Month</span><span class="plopt-p">₦800</span></div>
+            <div class="plopt" data-plan="2 Months" data-price="₦1,500" onclick="selPlan(this)"><span>2 Months</span><span class="plopt-p">₦1,500</span></div>
+            <div class="plopt sel" data-plan="3 Months" data-price="₦1,800" onclick="selPlan(this)"><span>3 Months ⭐</span><span class="plopt-p">₦1,800</span></div>
+            <div class="plopt" data-plan="6 Months" data-price="₦3,000" onclick="selPlan(this)"><span>6 Months</span><span class="plopt-p">₦3,000</span></div>
+            <div class="plopt" data-plan="8 Months" data-price="₦3,800" onclick="selPlan(this)"><span>8 Months 🔥</span><span class="plopt-p">₦3,800</span></div>
+          </div>
+          <div style="display:flex;gap:9px;margin-top:13px;"><button class="btn btn-ol" style="flex:1;" onclick="rBack(3)">← Back</button><button class="btn btn-pk" style="flex:2;" onclick="submitReg()">Register & Pay →</button></div>
+        </div>
       </div>
-      <div class="payment-note">
-        <strong>📌 After payment:</strong> Send your payment screenshot + your business name to our WhatsApp. Your store will be activated within <strong>2 hours</strong>. Use the description "<strong>Glanzmarkt [your plan]</strong>" when making the transfer.
-      </div>
-      <a href="https://wa.me/2348135327325?text=Hello!%20I%20just%20paid%20for%20Glanzmarkt.%20Here%20is%20my%20receipt%20and%20business%20name%3A" target="_blank" class="btn-big btn-pink" style="margin-top:28px;display:inline-block;">
-        📲 Send Receipt on WhatsApp
-      </a>
     </div>
-  </div>
-</section>
+  </sec>
+</div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <div class="logo-icon">🛍️</div>
-          <span class="logo-text">Glanz<span>markt</span></span>
-        </a>
-        <p>Nigeria's free, open marketplace. Every vendor deserves a platform. Every buyer deserves quality.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Marketplace</h4>
-        <a href="#shop">Browse Products</a>
-        <a href="#plans">View Plans</a>
-        <a href="#payment">Payment Info</a>
-      </div>
-      <div class="footer-col">
-        <h4>Vendors</h4>
-        <a href="#" onclick="openModal('register')">Register Store</a>
-        <a href="#" onclick="openModal('post')">Post Product</a>
-        <a href="https://wa.me/2348135327325" target="_blank">Contact Us</a>
+<!-- POST PRODUCT -->
+<div id="page-post" class="page">
+  <sec style="padding-top:90px;">
+    <div class="fw">
+      <div class="ctr" style="margin-bottom:5px;"><span class="stag">Add Product</span><h2 class="stitle">Post Your Product 📦</h2></div>
+      <div class="fcard">
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--wh2);margin-bottom:5px;"><span>Products Listed</span><span id="pcLabel">0 / 5</span></div>
+          <div class="lbar"><div class="lfill" id="pFill" style="width:0%"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--wh2);margin-top:4px;"><span>Daily Posts</span><span id="dcLabel">0 / 10 today</span></div>
+        </div>
+
+        <!-- BIG PHOTO UPLOAD -->
+        <div class="fg">
+          <label class="fl">📸 Product Photo</label>
+          <div class="phu" id="phuBox" onclick="document.getElementById('photoInput').click()">
+            <input type="file" accept="image/*" id="photoInput" onchange="handlePhoto(event)" style="display:none">
+            <div class="phu-inner" id="phuInner">
+              <span class="phu-icon">📷</span>
+              <div class="phu-title">Tap to upload your product photo</div>
+              <div class="phu-sub">Select from your gallery or take a new photo</div>
+              <div class="phu-hint">JPG, PNG — Max 5MB</div>
+            </div>
+            <div class="phu-preview-wrap" id="phuPrevWrap">
+              <img id="photoPrev" alt="Preview">
+              <button class="phu-change" onclick="event.stopPropagation();document.getElementById('photoInput').click()">📷 Change Photo</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="fg"><label class="fl">Product Name</label><input class="fi" id="pNm" placeholder="e.g. Floral Mini Dress"></div>
+        <div class="frow"><div class="fg"><label class="fl">Price (₦)</label><input class="fi" id="pPr" type="number" placeholder="e.g. 8500"></div><div class="fg"><label class="fl">Category</label><select class="fi" id="pCt"><option value="">Select</option><option>👗 Fashion</option><option>💄 Beauty</option><option>🍔 Food</option><option>📱 Electronics</option><option>🏠 Home</option><option>👟 Shoes</option><option>💎 Accessories</option><option>Other</option></select></div></div>
+        <div class="fg"><label class="fl">Store Name</label><input class="fi" id="pVn" placeholder="e.g. Amaka's Fashion"></div>
+        <div class="fg"><label class="fl">Your WhatsApp Number</label><input class="fi" id="pPh" type="tel" placeholder="e.g. 08012345678"></div>
+        <div class="fg"><label class="fl">Description</label><textarea class="fi" id="pDs" placeholder="Describe your product — colour, size, material, condition, price is negotiable..."></textarea></div>
+        <button class="btn btn-pk" style="width:100%;margin-top:3px;padding:15px;" onclick="submitProd()">🚀 Post Product Now</button>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Glanzmarkt. All rights reserved.</p>
-      <p>Made with <span>♥</span> in Nigeria</p>
+  </sec>
+</div>
+
+<!-- VENDOR DASHBOARD -->
+<div id="page-dashboard" class="page">
+  <div class="dw">
+    <div class="dhead">
+      <div class="dav">🏪</div>
+      <div class="dinfo"><h2 id="dStore">My Store</h2><p id="dInfo">Glanzmarkt Vendor</p></div>
+      <div class="dbadge pending-b" id="dBadge">Pending Activation</div>
+    </div>
+    <div class="dstats">
+      <div class="ds"><div class="dsn" id="stProds">0</div><div class="dsl">Products</div></div>
+      <div class="ds"><div class="dsn" id="stPosts">0</div><div class="dsl">Posts Today</div></div>
+      <div class="ds"><div class="dsn" id="stPlan">—</div><div class="dsl">Plan</div></div>
+    </div>
+    <div class="dpbox">
+      <h3>My Products <button class="btn btn-pk btn-sm" onclick="showPage('post')">+ Add</button></h3>
+      <div class="dplist" id="dPList"><div class="empty-state">No products yet. Tap "+ Add" above!</div></div>
     </div>
   </div>
-</footer>
+</div>
 
-<!-- REGISTER MODAL -->
-<div class="modal-overlay" id="registerModal" onclick="closeOutside(event,'register')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('register')">×</button>
-    <h2>Join Glanzmarkt 🛍️</h2>
-    <p>Register your store for free. Takes 2 minutes.</p>
-    <div class="progress-steps">
-      <div class="progress-step active" id="rp1"></div>
-      <div class="progress-step" id="rp2"></div>
-      <div class="progress-step" id="rp3"></div>
-    </div>
-    <!-- STEP 1 -->
-    <div id="rStep1">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">First Name</label>
-          <input class="form-input" type="text" id="rFirstName" placeholder="e.g. Amaka">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Last Name</label>
-          <input class="form-input" type="text" id="rLastName" placeholder="e.g. Okafor">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">WhatsApp Number</label>
-        <input class="form-input" type="tel" id="rPhone" placeholder="e.g. 08012345678">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Email Address</label>
-        <input class="form-input" type="email" id="rEmail" placeholder="e.g. amaka@gmail.com">
-      </div>
-      <button class="btn-big btn-pink" style="width:100%;margin-top:8px;" onclick="regNext(1)">Continue →</button>
-    </div>
-    <!-- STEP 2 -->
-    <div id="rStep2" style="display:none;">
-      <div class="form-group">
-        <label class="form-label">Business / Store Name</label>
-        <input class="form-input" type="text" id="rBizName" placeholder="e.g. Amaka's Fashion Store">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Product Category</label>
-        <select class="form-input" id="rCategory">
-          <option value="">Select a category</option>
-          <option>👗 Fashion & Clothing</option>
-          <option>💄 Beauty & Skincare</option>
-          <option>🍔 Food & Drinks</option>
-          <option>📱 Electronics & Gadgets</option>
-          <option>🏠 Home & Living</option>
-          <option>👟 Shoes & Bags</option>
-          <option>💎 Jewellery & Accessories</option>
-          <option>📚 Books & Education</option>
-          <option>🌿 Health & Wellness</option>
-          <option>🎨 Art & Crafts</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Your Location (State)</label>
-        <input class="form-input" type="text" id="rLocation" placeholder="e.g. Lagos, Abuja, Ibadan">
-      </div>
-      <div style="display:flex;gap:12px;margin-top:8px;">
-        <button class="btn-big btn-outline" style="flex:1;" onclick="regBack(2)">← Back</button>
-        <button class="btn-big btn-pink" style="flex:2;" onclick="regNext(2)">Continue →</button>
-      </div>
-    </div>
-    <!-- STEP 3 — CHOOSE PLAN -->
-    <div id="rStep3" style="display:none;">
-      <p style="font-size:0.85rem;color:var(--white2);margin-bottom:20px;margin-top:-8px;">Pick a plan to activate your store after registration.</p>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;" id="planSelect">
-        <div class="plan-option" data-plan="1 Month" data-price="₦800" onclick="selectPlan(this)">
-          <span>1 Month</span><span style="color:var(--pink);font-weight:700;">₦800</span>
-        </div>
-        <div class="plan-option" data-plan="2 Months" data-price="₦1,500" onclick="selectPlan(this)">
-          <span>2 Months</span><span style="color:var(--pink);font-weight:700;">₦1,500</span>
-        </div>
-        <div class="plan-option selected" data-plan="3 Months" data-price="₦1,800" onclick="selectPlan(this)">
-          <span>3 Months ⭐ Popular</span><span style="color:var(--pink);font-weight:700;">₦1,800</span>
-        </div>
-        <div class="plan-option" data-plan="6 Months" data-price="₦3,000" onclick="selectPlan(this)">
-          <span>6 Months</span><span style="color:var(--pink);font-weight:700;">₦3,000</span>
-        </div>
-        <div class="plan-option" data-plan="8 Months" data-price="₦3,800" onclick="selectPlan(this)">
-          <span>8 Months 🔥 Best Value</span><span style="color:var(--pink);font-weight:700;">₦3,800</span>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <button class="btn-big btn-outline" style="flex:1;" onclick="regBack(3)">← Back</button>
-        <button class="btn-big btn-pink" style="flex:2;" onclick="submitRegister()">Register & Pay →</button>
+<!-- ADMIN LOGIN -->
+<div id="page-admin-login" class="page">
+  <div class="login-wrap">
+    <div class="login-card">
+      <div style="position:relative;z-index:1;">
+        <div class="login-icon">🔐</div>
+        <h2>Admin Access</h2>
+        <p>Enter your password to access the Glanzmarkt control panel.</p>
+        <div class="login-error" id="loginErr">❌ Wrong password. Try again.</div>
+        <div class="fg"><label class="fl">Password</label><input class="fi" id="adminPw" type="password" placeholder="Enter admin password" onkeypress="if(event.key==='Enter')doLogin()"></div>
+        <button class="btn btn-pk" style="width:100%;margin-top:8px;" onclick="doLogin()">Login →</button>
+        <button class="btn btn-ol" style="width:100%;margin-top:10px;" onclick="showPage('home')">← Back to Site</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- POST PRODUCT MODAL -->
-<div class="modal-overlay" id="postModal" onclick="closeOutside(event,'post')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('post')">×</button>
-    <h2>Post a Product 📦</h2>
-    <p>Add a product to your store. Max 5 items, 10 posts per day.</p>
-    <div id="postLimitBar">
-      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--white2);margin-bottom:6px;">
-        <span>Daily Posts Used</span>
-        <span id="postCountLabel">0 / 10</span>
+<!-- ADMIN PANEL -->
+<div id="page-admin" class="page">
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <div class="admin-avatar">👑</div>
+      <div class="admin-info"><h2>GlanzmarktAdmin</h2><p>Full control — manage all products, vendors & uploads</p></div>
+      <button class="admin-logout" onclick="adminLogout()">Logout</button>
+    </div>
+    <div class="admin-stats">
+      <div class="as"><div class="asn" id="aTotProds">0</div><div class="asl">Total Products</div></div>
+      <div class="as"><div class="asn" id="aTotVendors">0</div><div class="asl">Vendors</div></div>
+      <div class="as"><div class="asn" id="aPending">0</div><div class="asl">Pending</div></div>
+      <div class="as"><div class="asn" id="aApproved">0</div><div class="asl">Approved</div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="atab active" onclick="switchTab('products')">📦 Products</button>
+      <button class="atab" onclick="switchTab('vendors')">🏪 Vendors</button>
+      <button class="atab" onclick="switchTab('upload')">📸 Upload Test</button>
+    </div>
+    <div class="atab-content active" id="tab-products"><div class="admin-pgrid" id="adminProdList"></div></div>
+    <div class="atab-content" id="tab-vendors"><div id="adminVendorList"></div></div>
+    <div class="atab-content" id="tab-upload">
+      <div class="admin-upload-box">
+        <h3>📸 Upload Test Product</h3>
+        <p class="desc">Test how the marketplace looks with a real product photo. Products you upload here are instantly approved and visible to everyone.</p>
+        <div class="fg">
+          <label class="fl">Product Photo</label>
+          <div class="phu" id="adminPhuBox" onclick="document.getElementById('adminPhotoInput').click()">
+            <input type="file" accept="image/*" id="adminPhotoInput" onchange="handleAdminPhoto(event)" style="display:none">
+            <div class="phu-inner" id="adminPhuInner">
+              <span class="phu-icon">📷</span>
+              <div class="phu-title">Tap to upload product photo</div>
+              <div class="phu-sub">Select from gallery or take new photo</div>
+              <div class="phu-hint">JPG, PNG — Max 5MB</div>
+            </div>
+            <div class="phu-preview-wrap" id="adminPhuPrevWrap">
+              <img id="adminPhotoPrev" alt="Preview">
+              <button class="phu-change" onclick="event.stopPropagation();document.getElementById('adminPhotoInput').click()">📷 Change Photo</button>
+            </div>
+          </div>
+        </div>
+        <div class="fg"><label class="fl">Product Name</label><input class="fi" id="aNm" placeholder="e.g. Floral Mini Dress"></div>
+        <div class="frow"><div class="fg"><label class="fl">Price (₦)</label><input class="fi" id="aPr" type="number" placeholder="e.g. 8500"></div><div class="fg"><label class="fl">Category</label><select class="fi" id="aCt"><option>👗 Fashion</option><option>💄 Beauty</option><option>🍔 Food</option><option>📱 Electronics</option><option>🏠 Home</option><option>👟 Shoes</option><option>💎 Accessories</option></select></div></div>
+        <div class="fg"><label class="fl">Store Name</label><input class="fi" id="aVn" placeholder="e.g. Viva Wears"></div>
+        <div class="fg"><label class="fl">WhatsApp Number</label><input class="fi" id="aPh" type="tel" placeholder="e.g. 08135327325"></div>
+        <div class="fg"><label class="fl">Description</label><textarea class="fi" id="aDs" placeholder="Describe the product..."></textarea></div>
+        <button class="btn btn-pk" style="width:100%;padding:14px;" onclick="adminUpload()">🚀 Upload & Go Live Now</button>
       </div>
-      <div class="limit-bar"><div class="limit-fill" id="postLimitFill" style="width:0%"></div></div>
     </div>
-    <div style="height:20px;"></div>
-    <div class="form-group">
-      <label class="form-label">Product Name</label>
-      <input class="form-input" type="text" id="pName" placeholder="e.g. Ankara Wrap Dress">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Price (₦)</label>
-        <input class="form-input" type="number" id="pPrice" placeholder="e.g. 8500">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Category</label>
-        <select class="form-input" id="pCategory">
-          <option value="">Select</option>
-          <option>👗 Fashion</option>
-          <option>💄 Beauty</option>
-          <option>🍔 Food</option>
-          <option>📱 Electronics</option>
-          <option>🏠 Home</option>
-          <option>👟 Shoes</option>
-          <option>💎 Accessories</option>
-          <option>Other</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Your WhatsApp Number</label>
-      <input class="form-input" type="tel" id="pPhone" placeholder="e.g. 08012345678">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Vendor / Store Name</label>
-      <input class="form-input" type="text" id="pVendor" placeholder="e.g. Amaka's Fashion">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Product Description</label>
-      <textarea class="form-input" id="pDesc" placeholder="Describe your product — size, colour, material, condition..." style="resize:vertical;min-height:90px;"></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Product Emoji (optional)</label>
-      <input class="form-input" type="text" id="pEmoji" placeholder="e.g. 👗 or 👟 or 💍" maxlength="4">
-    </div>
-    <button class="btn-big btn-pink" style="width:100%;margin-top:4px;" onclick="submitProduct()">Post Product</button>
   </div>
 </div>
 
-<!-- PAYMENT MODAL -->
-<div class="modal-overlay" id="paymentModal" onclick="closeOutside(event,'payment')">
+<!-- PAY MODAL -->
+<div class="moverlay" id="payMod" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal" style="text-align:center;">
-    <button class="modal-close" onclick="closeModal('payment')">×</button>
-    <div style="font-size:2.5rem;margin-bottom:12px;">💳</div>
+    <button class="mclose" onclick="document.getElementById('payMod').classList.remove('active')">×</button>
+    <div style="font-size:2rem;margin-bottom:8px;">💳</div>
     <h2>Complete Payment</h2>
-    <p id="payModalDesc">Transfer your plan fee to the account below to activate your store.</p>
-    <div class="payment-bank" style="text-align:left;margin:24px 0;">
-      <div class="bank-logo">💜</div>
-      <div class="bank-info">
-        <div class="bank-name">Opay</div>
-        <div class="bank-number">8135327325</div>
-        <div class="bank-holder">Odion Favour Oseriemen</div>
-      </div>
-      <button class="copy-btn" onclick="copyAccount()">Copy</button>
-    </div>
-    <div id="payAmount" style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--pink);margin:16px 0;"></div>
-    <div class="payment-note" style="text-align:left;margin-bottom:24px;">
-      <strong>After paying:</strong> Send your screenshot + business name to WhatsApp. Your store activates within 2 hours.
-    </div>
-    <a id="payWALink" href="#" target="_blank" class="btn-big btn-pink" style="display:block;width:100%;">📲 I've Paid — Send Receipt</a>
+    <p id="payDesc">Transfer your fee to activate your store.</p>
+    <div class="bankrow" style="text-align:left;margin:16px 0;"><div class="blogo">💜</div><div class="binfo"><div class="bname">Opay</div><div class="bnum">8135327325</div><div class="bholder">Odion Favour Oseriemen</div></div><button class="cpybtn" onclick="copyAcct()">Copy</button></div>
+    <div id="payAmt" style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--pk);margin:10px 0;"></div>
+    <div class="pnote" style="text-align:left;margin-bottom:16px;"><strong>After paying:</strong> Send screenshot + business name to WhatsApp. Activates in 2 hours.</div>
+    <a id="payWA" href="#" target="_blank" class="btn btn-pk" style="display:block;width:100%;">📲 I've Paid — Send Receipt</a>
   </div>
 </div>
 
 <!-- SUCCESS MODAL -->
-<div class="modal-overlay" id="successModal" onclick="closeOutside(event,'success')">
+<div class="moverlay" id="sucMod" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal" style="text-align:center;">
-    <button class="modal-close" onclick="closeModal('success')">×</button>
-    <div style="font-size:3.5rem;margin-bottom:16px;" id="successEmoji">🎉</div>
-    <h2 id="successTitle">You're In!</h2>
-    <p id="successMsg" style="margin-bottom:28px;"></p>
-    <button class="btn-big btn-pink" onclick="closeModal('success')">Done</button>
+    <button class="mclose" onclick="document.getElementById('sucMod').classList.remove('active')">×</button>
+    <div style="font-size:2.6rem;margin-bottom:10px;" id="sEmoji">🎉</div>
+    <h2 id="sTitle">Success!</h2>
+    <p id="sMsg" style="margin-bottom:20px;"></p>
+    <button class="btn btn-pk" onclick="document.getElementById('sucMod').classList.remove('active')">Done</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<style>
-.plan-option{
-  display:flex;justify-content:space-between;align-items:center;
-  background:var(--dark4);border:1.5px solid rgba(255,107,157,0.1);
-  border-radius:12px;padding:14px 20px;cursor:pointer;transition:all 0.2s;
-  font-size:0.88rem;
-}
-.plan-option:hover,.plan-option.selected{
-  border-color:var(--pink);background:rgba(255,107,157,0.08);
-}
-.plan-option.selected{box-shadow:0 0 0 1px var(--pink);}
-</style>
-
 <script>
-// ---- SAMPLE PRODUCTS ----
-const sampleProducts = [
-  {name:"Ankara Wrap Dress",vendor:"Zara Lagos",price:"₦8,500",emoji:"👗",bg:"#1a0d10",tag:"New"},
-  {name:"Fresh Chin Chin Pack",vendor:"Mama Cooks",price:"₦1,200",emoji:"🍪",bg:"#0d120a",tag:"Hot"},
-  {name:"Gold Chain Necklace",vendor:"Bling HQ",price:"₦4,000",emoji:"💍",bg:"#0d0d0a",tag:""},
-  {name:"Wireless Earbuds",vendor:"TechZone NG",price:"₦12,500",emoji:"🎧",bg:"#0a0d12",tag:""},
-  {name:"Braided Wig 20inch",vendor:"Viva's Hair",price:"₦18,000",emoji:"💇",bg:"#0d0a12",tag:"Hot"},
-  {name:"Men's Kaftan Set",vendor:"Lagos Threads",price:"₦6,500",emoji:"👘",bg:"#0d0a0a",tag:""},
+const ADMIN_PW='180699';
+let prods=JSON.parse(localStorage.getItem('gz_p')||'[]');
+let vendors=JSON.parse(localStorage.getItem('gz_vendors')||'[]');
+let vendorMe=JSON.parse(localStorage.getItem('gz_v')||'null');
+let dailyC=parseInt(localStorage.getItem('gz_dc')||'0');
+let lastD=localStorage.getItem('gz_dd')||'';
+let selPlanV='3 Months',selPriceV='₦1,800';
+let photoB64=null,adminPhotoB64=null,isAdmin=false;
+const today=new Date().toDateString();
+if(lastD!==today){dailyC=0;localStorage.setItem('gz_dc','0');localStorage.setItem('gz_dd',today);}
+
+const samples=[
+  {id:'s1',name:'Ankara Wrap Dress',vendor:'Zara Lagos',price:'₦8,500',phone:'08012345678',desc:'Beautiful ankara fabric. Sizes S-XL.',photo:null,emoji:'👗',bg:'#1a0d10',tag:'New',status:'approved'},
+  {id:'s2',name:'Chin Chin Pack 500g',vendor:'Mama Cooks',price:'₦1,200',phone:'08098765432',desc:'Freshly made crunchy chin chin!',photo:null,emoji:'🍪',bg:'#0d120a',tag:'Hot',status:'approved'},
+  {id:'s3',name:'Gold Chain Necklace',vendor:'Bling HQ',price:'₦4,000',phone:'08055544433',desc:'18k gold plated, 50cm length.',photo:null,emoji:'💍',bg:'#0d0d0a',tag:'',status:'approved'},
+  {id:'s4',name:'Wireless Earbuds',vendor:'TechZone NG',price:'₦12,500',phone:'08077788899',desc:'High quality sound, 6hr battery.',photo:null,emoji:'🎧',bg:'#0a0d12',tag:'',status:'approved'},
 ];
 
-let posted = JSON.parse(localStorage.getItem('glanzProducts') || '[]');
-let dailyCount = parseInt(localStorage.getItem('glanzDailyCount') || '0');
-let lastPostDate = localStorage.getItem('glanzLastDate') || '';
+function showPage(n){
+  if(n==='admin'&&!isAdmin){showPage('admin-login');return;}
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+n).classList.add('active');
+  window.scrollTo(0,0);
+  if(n==='shop'||n==='home')renderProds();
+  if(n==='post')updateLim();
+  if(n==='dashboard')renderDash();
+  if(n==='admin')renderAdmin();
+}
 
-const today = new Date().toDateString();
-if(lastPostDate !== today){dailyCount=0;localStorage.setItem('glanzDailyCount','0');localStorage.setItem('glanzLastDate',today);}
+function prodCard(p){
+  const approved=p.status==='approved'||!p.status;
+  if(!approved)return'';
+  return`<div class="pc">
+    <div class="pc-img-wrap">
+      ${p.photo?`<img src="${p.photo}" alt="${p.name}" loading="lazy">`:`<div class="pc-img-placeholder" style="background:${p.bg||'#1e1e1e'}">${p.emoji||'📦'}</div>`}
+      ${p.tag?`<div class="pc-tag">${p.tag}</div>`:''}
+    </div>
+    <div class="pb">
+      <div class="pv"><div class="pv-dot"></div>${p.vendor}</div>
+      <div class="pn">${p.name}</div>
+      <div class="pp">${p.price}</div>
+      <div class="pd">${p.desc||''}</div>
+      <a href="https://wa.me/234${(p.phone||'8135327325').replace(/^0/,'')}?text=Hi!%20I%20saw%20*${encodeURIComponent(p.name)}*%20on%20Glanzmarkt%20for%20${encodeURIComponent(p.price)}.%20I%27m%20interested%20in%20buying!" target="_blank" class="wab"><span class="wab-icon">💬</span> Order on WhatsApp</a>
+    </div>
+  </div>`;
+}
 
-function renderProducts(){
-  const grid = document.getElementById('productsGrid');
-  const all = [...sampleProducts,...posted].slice(0,20);
-  grid.innerHTML = all.map(p=>`
-    <div class="product-card">
-      <div class="product-img" style="background:${p.bg||'#1a1a1a'};">
-        <span style="font-size:3.5rem">${p.emoji||'📦'}</span>
-        ${p.tag?`<div class="product-tag">${p.tag}</div>`:''}
+function renderProds(){
+  const all=[...samples,...prods].filter(p=>p.status==='approved'||!p.status);
+  const html=all.map(p=>prodCard(p)).join('');
+  const fg=document.getElementById('featGrid');
+  const sg=document.getElementById('shopGrid');
+  if(fg)fg.innerHTML=html||'<div class="empty-state" style="grid-column:1/-1">No products yet. Be the first to post!</div>';
+  if(sg)sg.innerHTML=html||'<div class="empty-state" style="grid-column:1/-1">No products yet. Be the first to post!</div>';
+}
+
+// PHOTO UPLOAD HANDLER - vendor
+function handlePhoto(e){
+  const f=e.target.files[0];if(!f)return;
+  if(f.size>5*1024*1024){showToast('⚠️ Photo too large. Max 5MB.');return;}
+  const r=new FileReader();
+  r.onload=(ev)=>{
+    photoB64=ev.target.result;
+    document.getElementById('phuInner').style.display='none';
+    const pw=document.getElementById('phuPrevWrap');
+    pw.style.display='block';
+    document.getElementById('photoPrev').src=photoB64;
+    showToast('✅ Photo selected!');
+  };
+  r.readAsDataURL(f);
+}
+
+// PHOTO UPLOAD HANDLER - admin
+function handleAdminPhoto(e){
+  const f=e.target.files[0];if(!f)return;
+  if(f.size>5*1024*1024){showToast('⚠️ Photo too large. Max 5MB.');return;}
+  const r=new FileReader();
+  r.onload=(ev)=>{
+    adminPhotoB64=ev.target.result;
+    document.getElementById('adminPhuInner').style.display='none';
+    const pw=document.getElementById('adminPhuPrevWrap');
+    pw.style.display='block';
+    document.getElementById('adminPhotoPrev').src=adminPhotoB64;
+    showToast('✅ Photo selected!');
+  };
+  r.readAsDataURL(f);
+}
+
+function updateLim(){
+  const fl=document.getElementById('pFill');
+  const pl=document.getElementById('pcLabel');
+  const dl=document.getElementById('dcLabel');
+  if(fl)fl.style.width=(prods.length/5)*100+'%';
+  if(pl)pl.textContent=prods.length+' / 5';
+  if(dl)dl.textContent=dailyC+' / 10 today';
+}
+
+function submitProd(){
+  if(prods.length>=5){showToast('⚠️ 5 product limit reached! Remove one first.');return;}
+  if(dailyC>=10){showToast('⚠️ Daily limit 10/10. Try again tomorrow!');return;}
+  const nm=document.getElementById('pNm').value.trim();
+  const pr=document.getElementById('pPr').value;
+  const ph=document.getElementById('pPh').value.trim();
+  const vn=document.getElementById('pVn').value.trim();
+  const ds=document.getElementById('pDs').value.trim();
+  if(!nm||!pr||!ph||!vn){showToast('⚠️ Please fill all required fields');return;}
+  const prod={id:Date.now().toString(),name:nm,price:'₦'+parseInt(pr).toLocaleString(),vendor:vn,phone:ph,desc:ds,photo:photoB64,emoji:'📦',bg:'#1a1010',tag:'New',status:'pending'};
+  prods.push(prod);
+  localStorage.setItem('gz_p',JSON.stringify(prods));
+  dailyC++;localStorage.setItem('gz_dc',String(dailyC));localStorage.setItem('gz_dd',today);
+  // Reset form
+  document.getElementById('pNm').value='';document.getElementById('pPr').value='';
+  document.getElementById('pPh').value='';document.getElementById('pVn').value='';
+  document.getElementById('pDs').value='';
+  document.getElementById('phuInner').style.display='block';
+  document.getElementById('phuPrevWrap').style.display='none';
+  photoB64=null;updateLim();
+  showSuc('🎉','Product Submitted!',`"${nm}" has been submitted! It will be visible after admin approval.`);
+}
+
+let regSt=1;
+function rNext(s){
+  if(s===1&&(!document.getElementById('rFN').value||!document.getElementById('rPh').value)){showToast('⚠️ Fill required fields');return;}
+  if(s===2&&(!document.getElementById('rBz').value||!document.getElementById('rCt').value)){showToast('⚠️ Fill business details');return;}
+  document.getElementById('s'+s).style.display='none';
+  document.getElementById('s'+(s+1)).style.display='block';
+  document.getElementById('p'+(s+1)).classList.add('active');
+}
+function rBack(s){document.getElementById('s'+s).style.display='none';document.getElementById('s'+(s-1)).style.display='block';}
+function selPlan(el){document.querySelectorAll('.plopt').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');selPlanV=el.dataset.plan;selPriceV=el.dataset.price;}
+function submitReg(){
+  const vd={id:Date.now().toString(),name:document.getElementById('rFN').value+' '+document.getElementById('rLN').value,biz:document.getElementById('rBz').value,phone:document.getElementById('rPh').value,email:document.getElementById('rEm').value,location:document.getElementById('rLc').value,plan:selPlanV,price:selPriceV,status:'pending',date:new Date().toLocaleDateString()};
+  localStorage.setItem('gz_v',JSON.stringify(vd));vendorMe=vd;
+  vendors.push(vd);localStorage.setItem('gz_vendors',JSON.stringify(vendors));
+  ['s1','s2','s3'].forEach((id,i)=>{document.getElementById(id).style.display=i===0?'block':'none';});
+  ['p1','p2','p3'].forEach((id,i)=>{document.getElementById(id).classList[i===0?'add':'remove']('active');});
+  openPay(selPlanV,selPriceV);
+}
+
+function renderDash(){
+  if(!vendorMe){showToast('Please register first!');showPage('register');return;}
+  document.getElementById('dStore').textContent=vendorMe.biz||'My Store';
+  document.getElementById('dInfo').textContent=vendorMe.phone+' • Glanzmarkt';
+  document.getElementById('dBadge').textContent=vendorMe.status==='active'?'✅ Active':'⏳ Pending Activation';
+  document.getElementById('dBadge').className='dbadge '+(vendorMe.status==='active'?'active-b':'pending-b');
+  document.getElementById('stProds').textContent=prods.length;
+  document.getElementById('stPosts').textContent=dailyC;
+  document.getElementById('stPlan').textContent=vendorMe.plan||'—';
+  const list=document.getElementById('dPList');
+  if(prods.length===0){list.innerHTML='<div class="empty-state" style="grid-column:1/-1">No products yet. Tap "+ Add" to post!</div>';return;}
+  list.innerHTML=prods.map(p=>`
+    <div class="dpi">
+      <div class="dpi-img-wrap">
+        ${p.photo?`<img src="${p.photo}" alt="${p.name}">`:`<div class="dpi-placeholder">${p.emoji||'📦'}</div>`}
       </div>
-      <div class="product-body">
-        <div class="product-vendor">${p.vendor}</div>
-        <div class="product-name">${p.name}</div>
-        <div class="product-price">${p.price}</div>
-        <a href="https://wa.me/${p.phone?'234'+p.phone.replace(/^0/,''):'2348135327325'}?text=Hi!%20I%20saw%20your%20*${encodeURIComponent(p.name)}*%20on%20Glanzmarkt.%20I%27m%20interested!" 
-           target="_blank" class="wa-btn">💬 Order on WhatsApp</a>
+      <div class="dpi-info">
+        <div class="dpinn">${p.name}</div>
+        <div class="dpip">${p.price}</div>
+        <div class="dpi-status" style="color:${p.status==='approved'?'var(--gn)':'var(--yl)'}">${p.status==='approved'?'✅ Live':'⏳ Pending'}</div>
       </div>
+      <button class="dpi-del" onclick="delProd('${p.id}')" title="Remove">✕</button>
     </div>
   `).join('');
 }
-renderProducts();
+function delProd(id){prods=prods.filter(p=>p.id!==id);localStorage.setItem('gz_p',JSON.stringify(prods));renderDash();showToast('🗑️ Product removed!');}
 
-// ---- MODALS ----
-function openModal(name){
-  document.getElementById(name+'Modal').classList.add('active');
-  document.body.style.overflow='hidden';
-  if(name==='post') updateLimitBar();
+// ADMIN
+function doLogin(){
+  const pw=document.getElementById('adminPw').value;
+  if(pw===ADMIN_PW){isAdmin=true;document.getElementById('loginErr').style.display='none';document.getElementById('adminPw').value='';showPage('admin');}
+  else{document.getElementById('loginErr').style.display='block';document.getElementById('adminPw').value='';}
 }
-function closeModal(name){
-  document.getElementById(name+'Modal').classList.remove('active');
-  document.body.style.overflow='';
-}
-function closeOutside(e,name){if(e.target===document.getElementById(name+'Modal'))closeModal(name);}
+function adminLogout(){isAdmin=false;showPage('home');showToast('Logged out!');}
 
-// ---- REGISTER FLOW ----
-let regStep=1;
-function regNext(s){
-  if(s===1){
-    if(!document.getElementById('rFirstName').value||!document.getElementById('rPhone').value){showToast('⚠️ Please fill in required fields');return;}
+function switchTab(name){
+  const names=['products','vendors','upload'];
+  document.querySelectorAll('.atab').forEach((t,i)=>t.classList[names[i]===name?'add':'remove']('active'));
+  document.querySelectorAll('.atab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+function renderAdmin(){
+  const allP=[...samples,...prods];
+  const pending=prods.filter(p=>p.status==='pending').length;
+  const approved=allP.filter(p=>p.status==='approved'||!p.status).length;
+  document.getElementById('aTotProds').textContent=allP.length;
+  document.getElementById('aTotVendors').textContent=vendors.length;
+  document.getElementById('aPending').textContent=pending;
+  document.getElementById('aApproved').textContent=approved;
+
+  // Products grid
+  const pList=document.getElementById('adminProdList');
+  if(allP.length===0){pList.innerHTML='<div class="empty-state" style="grid-column:1/-1">No products yet.</div>';}
+  else{
+    pList.innerHTML=allP.map(p=>`
+      <div class="apc">
+        <div class="apc-img-wrap">
+          ${p.photo?`<img src="${p.photo}" alt="${p.name}">`:`<div class="apc-placeholder">${p.emoji||'📦'}</div>`}
+        </div>
+        <div class="apc-info">
+          <div class="apc-name">${p.name}</div>
+          <div class="apc-sub">${p.vendor} • ${p.price}</div>
+          <div style="margin-bottom:8px"><span class="${p.status==='approved'||!p.status?'tag-approved':'tag-pending'}">${p.status==='approved'||!p.status?'✅ Approved':'⏳ Pending'}</span></div>
+          <div class="apc-actions">
+            ${p.status==='pending'?`<button class="btn btn-gn btn-sm" style="padding:6px 12px;font-size:0.7rem;" onclick="approveP('${p.id}')">Approve</button>`:''}
+            <button class="btn btn-red btn-sm" style="padding:6px 12px;font-size:0.7rem;" onclick="removeP('${p.id}')">Remove</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
   }
-  if(s===2){
-    if(!document.getElementById('rBizName').value||!document.getElementById('rCategory').value){showToast('⚠️ Please fill in your business details');return;}
+
+  // Vendors
+  const vList=document.getElementById('adminVendorList');
+  if(vendors.length===0){vList.innerHTML='<div class="empty-state">No vendors registered yet.</div>';}
+  else{
+    vList.innerHTML=vendors.map(v=>`
+      <div class="vendor-card">
+        <div class="dav" style="width:44px;height:44px;font-size:1.1rem;flex-shrink:0;">🏪</div>
+        <div class="vc-info">
+          <div class="vc-name">${v.biz||v.name}<span class="vc-plan">${v.plan}</span></div>
+          <div class="vc-sub">${v.phone} • ${v.location||'Nigeria'} • ${v.date||'recently'}</div>
+        </div>
+        <div class="vc-actions">
+          ${v.status!=='active'?`<button class="btn btn-gn btn-sm" onclick="activateV('${v.id}')">Activate</button>`:`<span class="tag-approved">✅ Active</span>`}
+          <button class="btn btn-red btn-sm" onclick="removeV('${v.id}')">Remove</button>
+        </div>
+      </div>
+    `).join('');
   }
-  document.getElementById('rStep'+s).style.display='none';
-  document.getElementById('rStep'+(s+1)).style.display='block';
-  document.getElementById('rp'+(s+1)).classList.add('active');
-  regStep=s+1;
-}
-function regBack(s){
-  document.getElementById('rStep'+s).style.display='none';
-  document.getElementById('rStep'+(s-1)).style.display='block';
-  regStep=s-1;
 }
 
-let selectedPlan='3 Months', selectedPrice='₦1,800';
-function selectPlan(el){
-  document.querySelectorAll('.plan-option').forEach(e=>e.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedPlan=el.dataset.plan;
-  selectedPrice=el.dataset.price;
+function approveP(id){const i=prods.findIndex(p=>p.id===id);if(i>-1){prods[i].status='approved';localStorage.setItem('gz_p',JSON.stringify(prods));}renderAdmin();renderProds();showToast('✅ Product approved and live!');}
+function removeP(id){prods=prods.filter(p=>p.id!==id);localStorage.setItem('gz_p',JSON.stringify(prods));renderAdmin();showToast('🗑️ Product removed!');}
+function activateV(id){const i=vendors.findIndex(v=>v.id===id);if(i>-1){vendors[i].status='active';localStorage.setItem('gz_vendors',JSON.stringify(vendors));}if(vendorMe&&vendorMe.id===id){vendorMe.status='active';localStorage.setItem('gz_v',JSON.stringify(vendorMe));}renderAdmin();showToast('✅ Vendor activated!');}
+function removeV(id){vendors=vendors.filter(v=>v.id!==id);localStorage.setItem('gz_vendors',JSON.stringify(vendors));renderAdmin();showToast('🗑️ Vendor removed!');}
+
+function adminUpload(){
+  const nm=document.getElementById('aNm').value.trim();
+  const pr=document.getElementById('aPr').value;
+  const vn=document.getElementById('aVn').value.trim()||'Glanzmarkt';
+  const ph=document.getElementById('aPh').value.trim()||'8135327325';
+  const ds=document.getElementById('aDs').value.trim();
+  if(!nm||!pr){showToast('⚠️ Fill product name and price');return;}
+  if(!adminPhotoB64){showToast('⚠️ Please upload a photo first');return;}
+  const prod={id:'admin_'+Date.now(),name:nm,price:'₦'+parseInt(pr).toLocaleString(),vendor:vn,phone:ph,desc:ds,photo:adminPhotoB64,emoji:'⭐',bg:'#0d0d1a',tag:'Featured',status:'approved'};
+  prods.push(prod);localStorage.setItem('gz_p',JSON.stringify(prods));
+  document.getElementById('aNm').value='';document.getElementById('aPr').value='';
+  document.getElementById('aVn').value='';document.getElementById('aPh').value='';
+  document.getElementById('aDs').value='';
+  document.getElementById('adminPhuInner').style.display='block';
+  document.getElementById('adminPhuPrevWrap').style.display='none';
+  adminPhotoB64=null;
+  renderAdmin();
+  showSuc('🎉','Product is Live!',`"${nm}" is now visible on Glanzmarkt for everyone to see!`);
 }
 
-function submitRegister(){
-  closeModal('register');
-  openPayment(selectedPlan,selectedPrice);
-  // reset
-  regStep=1;
-  document.getElementById('rStep1').style.display='block';
-  document.getElementById('rStep2').style.display='none';
-  document.getElementById('rStep3').style.display='none';
-  ['rp1','rp2','rp3'].forEach((id,i)=>{
-    document.getElementById(id).classList[i===0?'add':'remove']('active');
-  });
+function openPay(plan,price){
+  document.getElementById('payDesc').textContent=`You selected the ${plan} plan. Transfer ${price} to the account below.`;
+  document.getElementById('payAmt').textContent=price;
+  const msg=`Hello! I paid for Glanzmarkt ${plan} (${price}). My receipt and business name:`;
+  document.getElementById('payWA').href=`https://wa.me/2348135327325?text=${encodeURIComponent(msg)}`;
+  document.getElementById('payMod').classList.add('active');
 }
+function copyAcct(){navigator.clipboard.writeText('8135327325').then(()=>showToast('✅ Account number copied!'));}
 
-// ---- PAYMENT ----
-function openPayment(plan,price){
-  document.getElementById('payModalDesc').textContent=`You selected the ${plan} plan. Transfer ${price} to the account below.`;
-  document.getElementById('payAmount').textContent=price;
-  const msg=`Hello! I just paid for Glanzmarkt ${plan} plan (${price}). Here is my payment receipt and business name:`;
-  document.getElementById('payWALink').href=`https://wa.me/2348135327325?text=${encodeURIComponent(msg)}`;
-  openModal('payment');
+function showSuc(e,t,m){
+  document.getElementById('sEmoji').textContent=e;
+  document.getElementById('sTitle').textContent=t;
+  document.getElementById('sMsg').textContent=m;
+  document.getElementById('sucMod').classList.add('active');
 }
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 
-function copyAccount(){
-  navigator.clipboard.writeText('8135327325').then(()=>showToast('✅ Account number copied!'));
-}
-
-// ---- POST PRODUCT ----
-function updateLimitBar(){
-  const pct = (dailyCount/10)*100;
-  document.getElementById('postLimitFill').style.width=pct+'%';
-  document.getElementById('postCountLabel').textContent=dailyCount+' / 10';
-}
-
-function submitProduct(){
-  if(dailyCount>=10){showToast('⚠️ Daily post limit reached (10/10). Try again tomorrow.');return;}
-  if(posted.length>=5){showToast('⚠️ You have reached the 5 product limit. Remove a product to add more.');return;}
-  const name=document.getElementById('pName').value;
-  const price=document.getElementById('pPrice').value;
-  const phone=document.getElementById('pPhone').value;
-  const vendor=document.getElementById('pVendor').value;
-  const emoji=document.getElementById('pEmoji').value||'📦';
-  if(!name||!price||!phone||!vendor){showToast('⚠️ Please fill in all required fields');return;}
-  const product={name,price:'₦'+parseInt(price).toLocaleString(),vendor,emoji,phone,bg:'#1a1010',tag:'New'};
-  posted.push(product);
-  localStorage.setItem('glanzProducts',JSON.stringify(posted));
-  dailyCount++;
-  localStorage.setItem('glanzDailyCount',String(dailyCount));
-  localStorage.setItem('glanzLastDate',today);
-  closeModal('post');
-  renderProducts();
-  showSuccess('🎉','Product Posted!',`"${name}" is now live on Glanzmarkt! Buyers can contact you on WhatsApp.`);
-}
-
-function showSuccess(emoji,title,msg){
-  document.getElementById('successEmoji').textContent=emoji;
-  document.getElementById('successTitle').textContent=title;
-  document.getElementById('successMsg').textContent=msg;
-  openModal('success');
-}
-
-// ---- TOAST ----
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3000);
-}
-
-// ---- SMOOTH NAV LINKS ----
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const target=document.querySelector(a.getAttribute('href'));
-    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});}
-  });
-});
+renderProds();
 </script>
 </body>
 </html>
