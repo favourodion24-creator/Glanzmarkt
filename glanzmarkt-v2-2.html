@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glanzmarkt — Nigeria's Marketplace</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GDZ23DNGPE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GDZ23DNGPE');
+</script>
+
 <style>
 :root{--pk:#FF6B9D;--pk2:#FF8FB3;--pkg:rgba(255,107,157,0.18);--yl:#FFD166;--gn:#06D6A0;--dk:#0D0D0D;--dk2:#161616;--dk3:#1E1E1E;--dk4:#272727;--wh:#FFF5F8;--wh2:rgba(255,245,248,0.65);--red:#FF4757;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -540,7 +548,7 @@ footer{background:var(--dk2);border-top:1px solid rgba(255,107,157,0.08);padding
 <div id="page-admin" class="page">
   <div class="admin-wrap">
     <div class="admin-head"><div class="admin-av">👑</div><div class="admin-info"><h2>GlanzmarktAdmin</h2><p>Full control — manage products, vendors & uploads</p></div><button class="admin-logout" onclick="adminLogout()">Logout</button></div>
-    <div class="admin-stats"><div class="astat"><div class="astat-n" id="aTotProds">0</div><div class="astat-l">Total Products</div></div><div class="astat"><div class="astat-n" id="aTotVendors">0</div><div class="astat-l">Vendors</div></div><div class="astat"><div class="astat-n" id="aPending">0</div><div class="astat-l">Pending</div></div><div class="astat"><div class="astat-n" id="aApproved">0</div><div class="astat-l">Approved</div></div></div>
+    <div class="admin-stats"><div class="astat"><div class="astat-n" id="aTotProds">0</div><div class="astat-l">Total Products</div></div><div class="astat"><div class="astat-n" id="aTotVendors">0</div><div class="astat-l">Vendors</div></div><div class="astat"><div class="astat-n" id="aPending">0</div><div class="astat-l">Pending</div></div><div class="astat"><div class="astat-n" id="aApproved">0</div><div class="astat-l">Approved</div></div><div class="astat"><div class="astat-n" id="visitorCount">0</div><div class="astat-l">👥 Total Visitors</div></div></div>
     <div class="admin-tabs"><button class="atab on" onclick="switchTab('products')">📦 Products</button><button class="atab" onclick="switchTab('vendors')">🏪 Vendors</button><button class="atab" onclick="switchTab('upload')">📸 Upload Test</button></div>
     <div class="atab-content on" id="tab-products"><div class="ap-grid" id="adminProdList"></div></div>
     <div class="atab-content" id="tab-vendors"><div id="adminVendorList"></div></div>
@@ -606,6 +614,8 @@ let dailyC=parseInt(localStorage.getItem('gz_dc')||'0');
 let lastD=localStorage.getItem('gz_dd')||'';
 let selPlanV='3 Months',selPriceV='₦2,000';
 let photoB64=null,adminPhotoB64=null,isAdmin=false,currentCat='';
+// Visitor counter
+(function(){const vc=parseInt(localStorage.getItem('gz_vc')||'0')+1;localStorage.setItem('gz_vc',vc);const el=document.getElementById('visitorCount');if(el)el.textContent=vc.toLocaleString();})();
 const today=new Date().toDateString();
 if(lastD!==today){dailyC=0;localStorage.setItem('gz_dc','0');localStorage.setItem('gz_dd',today);}
 
