@@ -482,7 +482,7 @@ footer{background:var(--dk2);border-top:1px solid rgba(255,107,157,0.08);padding
       <div class="ctr" style="margin-bottom:8px;"><span class="stag">Add Product</span><h2 class="stitle">Post Your Product 📦</h2></div>
       <div class="form-card">
         <div style="margin-bottom:20px;">
-          <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--wh2);margin-bottom:5px;"><span>Products Listed</span><span id="pcLabel">0 / 5</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--wh2);margin-bottom:5px;"><span>Products Listed</span><span id="pcLabel">0 (Unlimited)</span></div>
           <div class="lbar"><div class="lfill" id="pFill" style="width:0%"></div></div>
           <div style="display:flex;justify-content:space-between;font-size:0.68rem;color:var(--wh2);margin-top:4px;"><span>Daily Posts</span><span id="dcLabel">Unlimited</span></div>
         </div>
@@ -699,7 +699,6 @@ function updateLim(){
 }
 
 function submitProd(){
-
   if(dailyC>=99999){showToast('⚠️ Daily limit reached. Try tomorrow!');return;}
   const nm=document.getElementById('pNm').value.trim(),pr=document.getElementById('pPr').value,ph=document.getElementById('pPh').value.trim(),vn=document.getElementById('pVn').value.trim(),ds=document.getElementById('pDs').value.trim(),ct=document.getElementById('pCt').value;
   if(!nm||!pr||!ph||!vn){showToast('⚠️ Please fill all required fields');return;}
